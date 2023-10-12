@@ -6,7 +6,7 @@ import authRouter from './authRouter'
 
 const apiRoutes: { path: string, route: any }[] = [
     {
-        path: '/',
+        path: '/auth',
         route: authRouter,
     },
 ];

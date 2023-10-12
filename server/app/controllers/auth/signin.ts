@@ -9,6 +9,9 @@ import ApiError from "../../../utils/errors/ApiError";
 import { IUser } from "../../interfaces/UserInterface";
 import generateToken from "../../../utils/helpers/jwt/generateToken";
 
+// superadmin@example.com
+// admin@example.com
+
 const signin: RequestHandler = catchAsync(
     async (req: Request, res: Response) => {
 
@@ -27,7 +30,7 @@ const signin: RequestHandler = catchAsync(
         const token = generateToken(user, req.body.rememberMe);
 
         // user data
-        const { password, confirmPassword, ...pwd } = user;
+        const { password, ...pwd } = user;
 
         sendResponse<{ accessToken: any; user: Partial<IUser>; }>(res, {
             statusCode: httpStatus.OK,

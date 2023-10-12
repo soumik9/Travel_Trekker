@@ -18,6 +18,8 @@ export default (...requiredRoles: string[]) => async (req: Request, res: Respons
         req.user = verifiedUser; // role  , userid
 
         // role diye guard korar jnno
+        console.log(requiredRoles);
+        console.log(verifiedUser, 'user');
         if (requiredRoles.length && !requiredRoles.includes(verifiedUser.role)) {
             throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden');
         }

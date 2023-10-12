@@ -15,76 +15,35 @@ const userSchema = new Schema<IUser, {}, IUserMethods>({
     email: {
         type: String,
         required: [true, 'Email filed is required'],
-        unique: true,
+        // unique: true,
         validate: [validator.isEmail, 'Please provide a valid email.'],
-    },
-    username: {
-        type: String,
-        lowercase: true,
-        required: [true, 'Username filed is required'],
-        unique: true,
-    },
-    mobile: {
-        primary: {
-            type: String,
-            required: [true, 'Primary mobile filed is required']
-        },
-        secondary: String,
-    },
-    address: {
-        city: {
-            type: String,
-            required: [true, 'City filed is required']
-        },
-        present: String,
     },
     password: {
         type: String,
         required: [true, 'Password filed is required'],
         minlength: [6, 'Password must be at least 6 characters long'],
     },
-    confirmPassword: {
-        type: String,
-        required: [true, "Please confirm your password"],
-    },
     role: {
-        name: {
-            type: String,
-            lowercase: true,
-            required: [true, 'Role name is required'],
-            enum: {
-                values: [ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.CUSTOMER, ENUM_USER_ROLE.SUPPLIER],
-                message: `Status value can not be {VALUE}, must be ${ENUM_USER_ROLE.ADMIN}/${ENUM_USER_ROLE.CUSTOMER}/${ENUM_USER_ROLE.SUPPLIER}`
-            },
-            default: ENUM_USER_ROLE.CUSTOMER
-        },
-        permissions: [String]
-    },
-    status: {
         type: String,
+        lowercase: true,
+        required: [true, 'Role name is required'],
         enum: {
-            values: ['active', 'inactive', 'banned'],
-            message: "Status value can not be {VALUE}, must be inactive/inactive/banned"
+            values: [ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.USER],
+            message: `Role value can not be {VALUE}, must be ${ENUM_USER_ROLE.ADMIN}/${ENUM_USER_ROLE.SUPER_ADMIN}/${ENUM_USER_ROLE.USER}`
+        }
+    },
+    services: [
+        {
+            type: Types.ObjectId,
+            ref: "Service"
         },
-        default: 'active'
-    },
-    isVerified: {
-        type: Boolean,
-        default: false
-    },
-    rank: {
-        type: String,
-        enum: {
-            values: ['bronze', 'platinum', 'diamond'],
-            message: "Status value can not be {VALUE}, must be bronze/platinum/diamond"
+    ],
+    reviews: [
+        {
+            type: Types.ObjectId,
+            ref: "Review"
         },
-        default: 'bronze'
-    },
-    account: {
-        type: Types.ObjectId,
-        ref: "Account",
-    },
-    description: String,
+    ],
     orders: [
         {
             type: Types.ObjectId,
@@ -113,7 +72,6 @@ userSchema.pre("save", async function (next: NextFunction) {
     const hashedPassword = await bcrypt.hashSync(password, Number(config.BYCRYPT_SALT_ROUND));
 
     this.password = hashedPassword;
-    this.confirmPassword = undefined;
 
     next();
 });
