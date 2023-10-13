@@ -28,5 +28,5 @@ const hotelSchema = new Schema<IHotel>({
     ],
 }, { timestamps: true });
 
-const Hotel = model<IHotel>("Room", hotelSchema);
+const Hotel = model<IHotel>("Hotel", hotelSchema);
 export default Hotel;
