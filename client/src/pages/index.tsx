@@ -1,10 +1,9 @@
-import LandingLayout from "@/components/Layout/LandingLayout/LandingLayout";
+import Home from "@/views/Landing/Home/Home";
 
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <main>
-      <LandingLayout />
-    </main>
+    <>
+      <Home />
+    </>
   )
 }

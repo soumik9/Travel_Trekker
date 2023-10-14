@@ -30,7 +30,7 @@ export default function Header() {
             <CssBaseline />
             <div className='h-16'></div>
 
-            <AppBar component="nav" className='bg-lightDark container'>
+            <AppBar component="nav" className='!bg-lightDark container'>
                 <Toolbar className='flex justify-between'>
                     <IconButton
                         color="inherit"
@@ -46,7 +46,7 @@ export default function Header() {
                         variant="h6"
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-                        className='md:flex items-center text-secondary'
+                        className='md:!flex items-center text-secondary'
                     >
                         <Image src='/sm-logo.png' width={60} height={60} alt='small logo' />
                         <i>T</i>ravel &nbsp;<i>T</i>rekker
