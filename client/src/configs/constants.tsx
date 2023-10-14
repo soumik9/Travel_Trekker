@@ -4,10 +4,15 @@ export enum ENUM_USER_ROLE {
     USER = 'user'
 }
 
+export const homeLink = '/'
+export const loginUrl = '/auth/login'
+
+export const dashboardLink = '/dashboard'
+
 export const landingPageLayoutUrls = [
-    '/'
+    homeLink
 ]
 
 export const dashboardPageLayoutUrls = [
-    '/dashboard'
+    dashboardLink
 ]

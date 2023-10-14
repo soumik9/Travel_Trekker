@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,6 +8,10 @@ import * as Yup from "yup";
 import Input from '@/components/Forms/Input';
 import CustomButton from '@/components/Button/Button';
 import { ILogin } from '@/configs/types';
+import { useRouter } from 'next/router';
+import { useAppSelector } from '@/hooks/helpers';
+import { useLoginMutation } from '@/redux-rtk/features/auth/authApi';
+import { dashboardLink } from '@/configs/constants';
 
 const loginchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
@@ -23,20 +27,37 @@ const loginDefaultValues = {
 
 const Login = () => {
 
+    // global
+    const router = useRouter();
+    const auth = useAppSelector((state) => state.auth);
+    const [login, { isLoading, isSuccess }] = useLoginMutation();
+
     // hooks
     const { control, handleSubmit, formState: { errors }, setValue, getValues, reset, watch, trigger } = useForm({
         resolver: yupResolver(loginchema),
         defaultValues: loginDefaultValues,
     });
 
+    // states
     const [showPassword, setShowPassword] = useState<boolean>(false);
 
+    // if api call success then redirect to dashboard
+    useEffect(() => {
+        if (isSuccess) {
+            router.push(dashboardLink)
+        }
+    }, [isSuccess, router])
 
-    const handleLogin = (data: ILogin) => {
-        console.log(data);
-    }
+    // if authenticated then redirect to dashboard
+    useEffect(() => {
+        if (auth.isAuthenticated) {
+            router.push(dashboardLink);
+        }
+    }, [auth.isAuthenticated, router])
 
 
+    // handler
+    const handleLogin = (data: ILogin) => { login(data) }
 
     return (
         <form className='h-screen f-center' onSubmit={handleSubmit(handleLogin)}>
@@ -91,13 +112,13 @@ const Login = () => {
                     <CustomButton
                         text='Login'
                         variant="contained"
-                        // onClick={addItemOnClick}
                         css='w-full'
-                    // isLoading={loading}
-                    // loadingText={loadingText}
-                    // disabled={isDisabled}
+                        isLoading={isLoading}
+                        loadingText={'Login....'}
+                        disabled={isLoading}
                     />
                 </CardActions>
+
             </Card>
         </form>
     )
