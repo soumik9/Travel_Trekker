@@ -31,7 +31,7 @@ export default function Breadcrumb({ links, addText, addUrl }: Props) {
                 {links?.length && links.map((item, index) => <Link key={`${index}links`} className={cx(
                     '',
                     router.route === item.url ? 'text-purple-700 font-medium' : 'text-smartian'
-                )} href={dashboardLink}>
+                )} href={item.url}>
                     {item.title}
                 </Link>)}
             </Breadcrumbs>

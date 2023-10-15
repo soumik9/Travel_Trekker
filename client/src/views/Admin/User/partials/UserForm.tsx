@@ -8,11 +8,12 @@ type Props = {
     control: any;
     errors: any;
     error: any;
+    editPage: boolean;
     selectedRole: selectItemType | undefined;
     setSelectedRole: (selectedRole: selectItemType | undefined) => void;
 }
 
-const UserForm = ({ control, errors, selectedRole, setSelectedRole, error }: Props) => {
+const UserForm = ({ control, errors, selectedRole, setSelectedRole, error, editPage }: Props) => {
 
     // states
     const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -49,6 +50,7 @@ const UserForm = ({ control, errors, selectedRole, setSelectedRole, error }: Pro
                         onChange={field.onChange}
                         error={errors.email?.message}
                         labelRequired
+                        disabled={editPage ? true : false}
                     />
                 )}
             />

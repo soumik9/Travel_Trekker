@@ -1,4 +1,4 @@
-import { ENUM_USER_ROLE, addUserLink, dashboardLink, usersLink } from '@/configs/constants'
+import { ENUM_USER_ROLE, addUserLink, dashboardLink, editUserLink, usersLink } from '@/configs/constants'
 import { cx, useAppSelector } from '@/hooks/helpers'
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import Link from 'next/link'
@@ -28,7 +28,7 @@ const sidebarItems = [
         url: usersLink,
         icon: AiOutlineUser,
         roles: [ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN],
-        activeRouter: [usersLink, addUserLink]
+        activeRouter: [usersLink, addUserLink, editUserLink]
     },
 ]
 

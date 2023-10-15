@@ -14,6 +14,7 @@ router.post('/signin', signin);
 
 router.post(
     '/signup',
+    auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
     signup
 );
 

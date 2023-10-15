@@ -13,13 +13,15 @@ export const dashboardLink = '/dashboard'
 
 export const usersLink = '/user'
 export const addUserLink = '/user/add'
+export const editUserLink = '/user/[userId]'
 
 export const landingPageLayoutUrls = [
     homeLink
 ]
 
 export const dashboardPageLayoutUrls = [
-    dashboardLink, usersLink, addUserLink
+    dashboardLink,
+    usersLink, addUserLink, editUserLink,
 ]
 
 export const rolesOptions: selectItemType[] = [
