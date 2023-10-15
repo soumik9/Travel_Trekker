@@ -1,4 +1,4 @@
-import { ENUM_USER_ROLE } from '@/configs/constants'
+import { ENUM_USER_ROLE, addUserLink, dashboardLink, usersLink } from '@/configs/constants'
 import { cx, useAppSelector } from '@/hooks/helpers'
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import Link from 'next/link'
@@ -11,21 +11,24 @@ type Props = {}
 const sidebarItems = [
     {
         text: 'Dashboard',
-        url: '/dashboard',
+        url: dashboardLink,
         icon: AiOutlineDashboard,
-        roles: [ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER]
+        roles: [ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER],
+        activeRouter: [dashboardLink]
     },
     {
         text: 'Orders',
         url: '/orders',
         icon: AiOutlineUser,
-        roles: [ENUM_USER_ROLE.USER]
+        roles: [ENUM_USER_ROLE.USER],
+        activeRouter: ['/order']
     },
     {
         text: 'Users',
-        url: '/users',
+        url: usersLink,
         icon: AiOutlineUser,
-        roles: [ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN]
+        roles: [ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN],
+        activeRouter: [usersLink, addUserLink]
     },
 ]
 
@@ -52,10 +55,10 @@ const DashboardSidebar = (props: Props) => {
                         <ListItem key={item.text} disablePadding>
                             <Link href={item.url} className='w-full'>
                                 <ListItemButton className={cx(
-                                    router.route === item.url && '!bg-smartian !text-white'
+                                    item.activeRouter.includes(router.route) && '!bg-smartian !text-white'
                                 )}>
                                     <ListItemIcon>
-                                        <Icon icon={item.icon} isActive={router.route === item.url} />
+                                        <Icon icon={item.icon} isActive={item.activeRouter.includes(router.route)} />
                                     </ListItemIcon>
                                     <ListItemText primary={item.text} className='!font-medium' />
                                 </ListItemButton>

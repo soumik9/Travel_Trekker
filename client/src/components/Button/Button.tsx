@@ -20,9 +20,9 @@ const CustomButton = ({ type, loadingText, isLoading, text, variant, variantColo
     <button
       type="submit"
       className={cx(
-        "!transition !ease-in-out !duration-500 text-white !py-2.5 !font-medium !bg-primary-600 hover:!bg-primary disabled:!bg-primary-300 disabled:!text-gray-300 rounded-lg",
+        "!transition !ease-in-out !duration-500 text-white !py-2.5 !font-medium !bg-purple-600 hover:!bg-purple disabled:!bg-purple-300 disabled:!text-gray-300 rounded-lg",
 
-        variant === "outlined" && "!bg-transparent hover:!bg-primary-600 hover:!text-white !border-primary hover:!border-primary-300 !text-primary",
+        variant === "outlined" && "!bg-transparent hover:!bg-purple-600 hover:!text-white !border-primary hover:!border-primary-300 !text-primary",
 
         (variantColor === 'error' && !variant?.length) && 'hover:!bg-error !bg-error-hover',
 

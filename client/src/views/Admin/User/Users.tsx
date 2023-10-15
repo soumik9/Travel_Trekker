@@ -1,6 +1,6 @@
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb'
 import CardLayout from '@/components/ViewLayout/admin/CardLayout'
-import { ENUM_USER_ROLE, usersLink } from '@/configs/constants'
+import { ENUM_USER_ROLE, addUserLink, usersLink } from '@/configs/constants'
 import React from 'react'
 import DataTable from 'react-data-table-component'
 import ActionsBtn from './partials/ActionsBtn'
@@ -29,13 +29,11 @@ const Users = () => {
             selector: (row: IUser) => row.name,
             filterable: true,
             sortable: true,
-            maxWidth: '250px'
         },
         {
             name: 'Email',
             selector: (row: IUser) => row.email,
             filterable: true,
-            maxWidth: '180px'
         },
         {
             name: 'Role',
@@ -65,6 +63,8 @@ const Users = () => {
                         url: usersLink,
                     }
                 ]}
+                addText='Add User'
+                addUrl={addUserLink}
             />
 
             <CardLayout title='Users' isLoading={false} isError={isError} isSuccess={isSuccess} >

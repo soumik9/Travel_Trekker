@@ -4,17 +4,15 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import { AiOutlineMenu } from 'react-icons/ai';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import DashboardSidebar from './partials/DashboardSidebar';
 import { loginUrl } from '@/configs/constants';
 import { userLoggedOut } from '@/redux-rtk/features/auth/authSlice';
 import { useRouter } from 'next/router';
 import { useAppDispatch, useAppSelector } from '@/hooks/helpers';
+import DashboardHeader from './partials/DashboardHeader';
 
 const drawerWidth = 240;
 
@@ -102,22 +100,13 @@ export default function DashboardLayout({ children }: Props) {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar position="fixed" open={open}>
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        sx={{ mr: 2, ...(open && { display: 'none' }) }}
-                    >
-                        <AiOutlineMenu />
-                    </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        Persistent drawer
-                    </Typography>
-                </Toolbar>
-            </AppBar>
+
+            <DashboardHeader
+                open={open}
+                AppBar={AppBar}
+                handleDrawerOpen={handleDrawerOpen}
+            />
+
             <Drawer
                 sx={{
                     width: drawerWidth,
