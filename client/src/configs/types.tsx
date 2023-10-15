@@ -12,7 +12,7 @@ export interface IUser {
     image: string;
     email: string;
     password: string;
-    role: IRole;
+    role: IRole | undefined;
     services: string[];
     reviews: string[];
     orders: string[];
