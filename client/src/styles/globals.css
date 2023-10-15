@@ -18,3 +18,7 @@
 .trans {
   @apply transition ease-in-out duration-300;
 }
+
+.cardLayout {
+  @apply bg-purple-50 shadow-md rounded-md;
+}

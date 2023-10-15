@@ -5,12 +5,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+
+
         'primary-400': "#E9C296",
         'primary-300': "#ECCBA6",
         primary: "#E7BD8D",
         'primary-600': "#E2B077",
         'primary-700': "#DEA462",
 
+        "purple-50": "#eeeffa",
         purple: '#AB93E1',
         'purple-300': '#C9BAEC',
         'purple-400': '#B7A2E6',

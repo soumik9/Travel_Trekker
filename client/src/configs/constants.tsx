@@ -8,11 +8,12 @@ export const homeLink = '/'
 export const loginUrl = '/auth/login'
 
 export const dashboardLink = '/dashboard'
+export const usersLink = '/users'
 
 export const landingPageLayoutUrls = [
     homeLink
 ]
 
 export const dashboardPageLayoutUrls = [
-    dashboardLink
+    dashboardLink, usersLink
 ]

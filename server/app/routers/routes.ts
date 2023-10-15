@@ -4,12 +4,17 @@ const router = express.Router();
 import authRouter from './authRouter'
 import hotelRouter from './hotelRouter'
 import roomRouter from './roomRouter'
+import userRouter from './userRouter'
 
 
 const apiRoutes: { path: string, route: any }[] = [
     {
         path: '/auth',
         route: authRouter,
+    },
+    {
+        path: '/user',
+        route: userRouter,
     },
     {
         path: '/hotel',

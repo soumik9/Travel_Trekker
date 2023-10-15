@@ -1,4 +1,4 @@
-import { apiSlice } from "../api/apiSlice";
+import { apiSlice, tagTypes } from "../api/apiSlice";
 import toast from 'react-hot-toast';
 
 export const userApi = apiSlice.injectEndpoints({
@@ -6,9 +6,9 @@ export const userApi = apiSlice.injectEndpoints({
 
         // all users endpoint here
         getUsers: builder.query({
-            query: ({ role, city, searchText }) => `user?sortBy=createdAt&sortOrder=desc${role ? `&role.name=${role}` : ''}${city ? `&address.city=${city}` : ''}${searchText ? `&searchTerm=${searchText}` : ''}`,
+            query: () => `user`,
             keepUnusedDataFor: 600,
-            providesTags: ['Users'],
+            providesTags: [tagTypes.USERS],
             async onQueryStarted(arg, { queryFulfilled }) {
                 try {
                     await queryFulfilled;
@@ -22,7 +22,7 @@ export const userApi = apiSlice.injectEndpoints({
         getUser: builder.query({
             query: (userId) => `user/${userId}`,
             providesTags: (result, error, arg) => [{
-                type: 'User', id: arg
+                type: tagTypes.USER, id: arg
             }],
             async onQueryStarted(arg, { queryFulfilled }) {
                 try {
@@ -41,8 +41,8 @@ export const userApi = apiSlice.injectEndpoints({
                 body: updatedData,
             }),
             invalidatesTags: (result, error, arg) => [
-                'Users',
-                { type: 'User', id: arg.userId }
+                tagTypes.USERS,
+                { type: tagTypes.USER, id: arg.userId }
             ],
             async onQueryStarted(arg, { queryFulfilled }) {
                 try {
@@ -59,7 +59,7 @@ export const userApi = apiSlice.injectEndpoints({
                 url: `user/${userId}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: ['Users'],
+            invalidatesTags: [tagTypes.USERS],
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
                 try {
                     await queryFulfilled;

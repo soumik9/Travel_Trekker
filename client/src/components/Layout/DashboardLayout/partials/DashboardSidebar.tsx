@@ -1,6 +1,7 @@
 import { ENUM_USER_ROLE } from '@/configs/constants'
 import { cx, useAppSelector } from '@/hooks/helpers'
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { AiOutlineDashboard, AiOutlineUser } from 'react-icons/ai'
@@ -49,14 +50,16 @@ const DashboardSidebar = (props: Props) => {
                 if (auth.user?.role && item.roles.includes(auth.user.role)) {
                     return (
                         <ListItem key={item.text} disablePadding>
-                            <ListItemButton className={cx(
-                                router.route === item.url && '!bg-smartian !text-white'
-                            )}>
-                                <ListItemIcon>
-                                    <Icon icon={item.icon} isActive={router.route === item.url} />
-                                </ListItemIcon>
-                                <ListItemText primary={item.text} className='!font-medium' />
-                            </ListItemButton>
+                            <Link href={item.url} className='w-full'>
+                                <ListItemButton className={cx(
+                                    router.route === item.url && '!bg-smartian !text-white'
+                                )}>
+                                    <ListItemIcon>
+                                        <Icon icon={item.icon} isActive={router.route === item.url} />
+                                    </ListItemIcon>
+                                    <ListItemText primary={item.text} className='!font-medium' />
+                                </ListItemButton>
+                            </Link>
                         </ListItem>
                     );
                 }
