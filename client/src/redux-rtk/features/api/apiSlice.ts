@@ -4,6 +4,10 @@ export enum tagTypes {
     USER = 'User',
     USERS = 'Users',
     PROFILE = 'Profile',
+    HOTEL = 'Hotel',
+    HOTELS = 'Hotels',
+    ROOM = 'Room',
+    ROOMS = 'Rooms',
 }
 
 export const apiSlice = createApi({
@@ -20,7 +24,11 @@ export const apiSlice = createApi({
     tagTypes: [
         tagTypes.USER,
         tagTypes.USERS,
-        tagTypes.PROFILE
+        tagTypes.PROFILE,
+        tagTypes.HOTEL,
+        tagTypes.HOTELS,
+        tagTypes.ROOM,
+        tagTypes.ROOMS,
     ],
     endpoints: (builder) => ({}),
 })

@@ -82,7 +82,7 @@ const Users = () => {
                     />
                 </div>
 
-            </CardLayout >
+            </CardLayout>
         </>
     )
 }

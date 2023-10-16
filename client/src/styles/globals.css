@@ -22,3 +22,12 @@
 .cardLayout {
   @apply bg-purple-50 shadow-md rounded-md;
 }
+
+.rdt_Table .rdt_TableHead .rdt_TableHeadRow {
+  background-color: #445b77;
+  color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}

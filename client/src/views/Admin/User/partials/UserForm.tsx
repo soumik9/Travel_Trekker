@@ -8,7 +8,7 @@ type Props = {
     control: any;
     errors: any;
     error: any;
-    editPage: boolean;
+    editPage?: boolean;
     selectedRole: selectItemType | undefined;
     setSelectedRole: (selectedRole: selectItemType | undefined) => void;
 }

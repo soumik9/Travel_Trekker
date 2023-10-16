@@ -16,6 +16,14 @@ export const usersLink = '/user'
 export const addUserLink = '/user/add'
 export const editUserLink = '/user/[userId]'
 
+export const roomsLink = '/room'
+export const addRoomLink = '/room/add'
+export const editRoomLink = '/room/[roomId]'
+
+export const hotelsLink = '/hotel'
+export const addHotelLink = '/hotel/add'
+export const editHotelLink = '/hotel/[hotelId]'
+
 export const landingPageLayoutUrls = [
     homeLink
 ]
@@ -23,6 +31,8 @@ export const landingPageLayoutUrls = [
 export const dashboardPageLayoutUrls = [
     dashboardLink,
     usersLink, addUserLink, editUserLink,
+    roomsLink, addRoomLink, editRoomLink,
+    hotelsLink, addHotelLink, editHotelLink,
 ]
 
 export const rolesOptions: selectItemType[] = [
