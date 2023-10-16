@@ -12,10 +12,10 @@ const deleteUser: RequestHandler = catchAsync(
 
         // checking is user available
         const user = await User.findOne({ _id: userId });
-        if (!user) throw new ApiError(httpStatus.NOT_FOUND, 'Check is role available!');
+        if (!user) throw new ApiError(httpStatus.NOT_FOUND, 'Check is user available!');
 
         // if admin user delete request
-        if (user.email === 'admin@admin.com') throw new ApiError(httpStatus.FORBIDDEN, 'Please contact admin to delete user!');
+        if (user.email === 'admin@gamil.com' || user.email === 'admin@example.com' || user.email === 'superadmin@gamil.com' || user.email === 'superadmin@example.com') throw new ApiError(httpStatus.FORBIDDEN, 'Please contact admin to delete user!');
 
         // deleting data
         await User.deleteOne({ _id: userId })

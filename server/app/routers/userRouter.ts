@@ -26,6 +26,10 @@ router.patch(
     updateUser
 );
 
-router.delete('/:userId', auth(ENUM_USER_ROLE.ADMIN), deleteUser);
+router.delete(
+    '/:userId',
+    auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+    deleteUser
+);
 
 export default router;
