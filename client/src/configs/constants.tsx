@@ -8,6 +8,7 @@ export enum ENUM_USER_ROLE {
 
 export const homeLink = '/'
 export const loginUrl = '/auth/login'
+export const signupUrl = '/auth/signup'
 
 export const dashboardLink = '/dashboard'
 

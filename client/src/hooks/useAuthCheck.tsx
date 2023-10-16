@@ -54,7 +54,7 @@ export default function useAuthCheck() {
                 setAuthChecked(true);
             }
         } else {
-            router.push(loginUrl);
+            // router.push(loginUrl);
             setAuthChecked(true);
             setAuthenticated(true);
         }

@@ -24,6 +24,24 @@ export const authApi = apiSlice.injectEndpoints({
             }
         }),
 
+        // register endpoint here
+        userSignup: builder.mutation({
+            query: (data) => ({
+                url: 'auth/user/signup',
+                method: 'POST',
+                body: data
+            }),
+            invalidatesTags: [tagTypes.USERS],
+            async onQueryStarted(arg, { queryFulfilled }) {
+                try {
+                    const result = await queryFulfilled;
+                    toast.success(result.data.message);
+                } catch (error: any) {
+                    toast.error(error.error.data.message);
+                }
+            }
+        }),
+
         // login endpoint here
         login: builder.mutation({
             query: (data) => ({
@@ -70,4 +88,9 @@ export const authApi = apiSlice.injectEndpoints({
     })
 });
 
-export const { useSignupMutation, useLoginMutation, useGetProfileQuery } = authApi;
+export const {
+    useSignupMutation,
+    useLoginMutation,
+    useGetProfileQuery,
+    useUserSignupMutation
+} = authApi;

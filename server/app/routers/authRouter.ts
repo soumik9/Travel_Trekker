@@ -7,10 +7,16 @@ import signup from '../controllers/auth/signup';
 
 import auth from '../middleware/auth'
 import { ENUM_USER_ROLE } from '../../utils/constants/constants';
+import userSignup from '../controllers/auth/userSignup';
 
 
 //routes
 router.post('/signin', signin);
+
+router.post(
+    '/user/signup',
+    userSignup
+);
 
 router.post(
     '/signup',

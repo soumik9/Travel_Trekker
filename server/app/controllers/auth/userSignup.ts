@@ -7,7 +7,7 @@ import catchAsync from "../../../utils/helpers/catchAsync";
 import ApiError from "../../../utils/errors/ApiError";
 import { ENUM_USER_ROLE } from "../../../utils/constants/constants";
 
-const signup: RequestHandler = catchAsync(
+const userSignup: RequestHandler = catchAsync(
     async (req: IRequestFile, res: Response) => {
 
         let body = req.body;
@@ -25,11 +25,7 @@ const signup: RequestHandler = catchAsync(
             body.image = `https://ui-avatars.com/api/?name=${body.name}`;
         }
 
-        // setting signup role for user
-        if (req?.user?.role === ENUM_USER_ROLE.USER) {
-            body.role = ENUM_USER_ROLE.USER;
-        }
-
+        body.role = ENUM_USER_ROLE.USER;
         await User.create(body);
 
         sendResponse(res, {
@@ -40,4 +36,4 @@ const signup: RequestHandler = catchAsync(
     }
 )
 
-export default signup
+export default userSignup

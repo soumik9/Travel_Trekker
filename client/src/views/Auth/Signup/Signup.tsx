@@ -7,45 +7,47 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from "yup";
 import Input from '@/components/Forms/Input';
 import CustomButton from '@/components/Button/Button';
-import { ILogin } from '@/configs/types';
 import { useRouter } from 'next/router';
 import { useAppSelector } from '@/hooks/helpers';
-import { useLoginMutation } from '@/redux-rtk/features/auth/authApi';
-import { dashboardLink, homeLink, signupUrl } from '@/configs/constants';
+import { useSignupMutation, useUserSignupMutation } from '@/redux-rtk/features/auth/authApi';
+import { dashboardLink, homeLink, loginUrl } from '@/configs/constants';
+import { IUser } from '@/configs/types';
 import Link from 'next/link';
 
-const loginchema = Yup.object().shape({
+const signupSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string()
         .required('Password is required')
         .min(6, 'Password must be at least 6 characters long'),
 });
 
-const loginDefaultValues = {
+const signupDefaultValues = {
+    name: '',
     email: '',
     password: '',
 }
 
-const Login = () => {
+const Signup = () => {
 
     // global
     const router = useRouter();
     const auth = useAppSelector((state) => state.auth);
-    const [login, { isLoading, isSuccess }] = useLoginMutation();
+    const [userSignup, { isLoading, isSuccess }] = useUserSignupMutation();
 
     // hooks
-    const { control, handleSubmit, formState: { errors }, setValue, getValues, reset, watch, trigger } = useForm({
-        resolver: yupResolver(loginchema),
-        defaultValues: loginDefaultValues,
+    const { control, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(signupSchema),
+        defaultValues: signupDefaultValues,
     });
 
     // states
     const [showPassword, setShowPassword] = useState<boolean>(false);
 
-    // if api call success then redirect to dashboard
+    // if success
     useEffect(() => {
         if (isSuccess) {
-            router.push(dashboardLink)
+            router.push(loginUrl);
         }
     }, [isSuccess, router])
 
@@ -58,19 +60,35 @@ const Login = () => {
 
 
     // handler
-    const handleLogin = (data: ILogin) => { login(data) }
+    const handleSignupUser = (data: Partial<IUser>) => { userSignup(data) }
 
     return (
-        <form className='h-screen f-center' onSubmit={handleSubmit(handleLogin)}>
+        <form className='h-screen f-center' onSubmit={handleSubmit(handleSignupUser)}>
             <Card className='!bg-lightDark min-w-[375px] md:min-w-[600px] text-secondary p-5 pb-12'>
                 <CardContent>
                     <p className="text-secondary text-[26px] text-center font-medium">
-                        Login
+                        Signup
                     </p>
 
                     <div className='border text-secondary my-2'> </div>
 
                     <div className='space-y-5'>
+                        <Controller
+                            name="name"
+                            control={control}
+                            render={({ field }) => (
+                                <Input
+                                    label="Name"
+                                    id="name"
+                                    placeholder="Soumik Ahammed"
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    error={errors.name?.message}
+                                    labelRequired
+                                />
+                            )}
+                        />
+
                         <Controller
                             name="email"
                             control={control}
@@ -83,7 +101,7 @@ const Login = () => {
                                     onChange={field.onChange}
                                     error={errors.email?.message}
                                     labelRequired
-                                    autoComplete='off'
+                                    autoComplete="off"
                                 />
                             )}
                         />
@@ -104,6 +122,7 @@ const Login = () => {
                                     passwordToggle={true}
                                     showPassword={showPassword}
                                     setShowPassword={setShowPassword}
+                                    autoComplete="off"
                                 />
                             )}
                         />
@@ -112,7 +131,7 @@ const Login = () => {
 
                 <CardActions className='flex flex-col'>
                     <CustomButton
-                        text='Login'
+                        text='Signup'
                         variant="contained"
                         css='w-full'
                         isLoading={isLoading}
@@ -120,9 +139,8 @@ const Login = () => {
                         disabled={isLoading}
                     />
 
-
-                    <Link href={signupUrl} className='text-purple-600 mt-3 hover:text-purple hover:underline trans'>
-                        Not Registred? Register
+                    <Link href={loginUrl} className='text-purple-600 mt-3 hover:text-purple hover:underline trans'>
+                        Login Here
                     </Link>
 
                     <Link href={homeLink} className='text-purple-600 mt-3 hover:text-purple hover:underline trans'>
@@ -135,4 +153,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Signup

@@ -9,7 +9,6 @@ import deleteUser from '../controllers/user/deleteUser';
 
 // middleware
 import auth from '../middleware/auth'
-import upload from '../middleware/upload'
 import { ENUM_USER_ROLE } from '../../utils/constants/constants';
 
 //routes
@@ -20,7 +19,13 @@ router.get(
 );
 
 router.get('/:userId', auth(ENUM_USER_ROLE.ADMIN), getUser);
-router.patch('/:userId', auth(ENUM_USER_ROLE.ADMIN), upload.single('image'), updateUser);
+
+router.patch(
+    '/:userId',
+    auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+    updateUser
+);
+
 router.delete('/:userId', auth(ENUM_USER_ROLE.ADMIN), deleteUser);
 
 export default router;
