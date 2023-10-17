@@ -22,7 +22,7 @@ const Hotel = () => {
         },
         {
             name: 'Location',
-            selector: (row: IHotel) => row.location,
+            selector: (row: IHotel) => <span className='capitalize'>{row.location}</span>,
             filterable: true,
         },
         {

@@ -32,7 +32,7 @@ const EditUser = (props: Props) => {
                 ]}
             />
 
-            <CardLayout title={`Update User [${user?.data?._id}]`} isLoading={false} isError={isError} isSuccess={isSuccess}>
+            <CardLayout title={`Update User [${user?.data?._id}]`} isLoading={isLoading} isError={isError} isSuccess={isSuccess}>
                 <UpdateUser
                     data={user?.data}
                     userId={userId}

@@ -25,7 +25,7 @@ const HotelActionBtn = ({ row }: Props) => {
     return (
         <div className='flex gap-[7px]'>
             <Link
-                href={`/user/${row._id}`}
+                href={`/hotel/${row._id}`}
                 className={cx(
                     actionBtnClass,
                     'bg-warning hover:bg-warning-hover'

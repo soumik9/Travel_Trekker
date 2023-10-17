@@ -50,7 +50,7 @@ const AddRoom = () => {
             reset();
             setSelectedStatus(statusOptions[0]);
             setSelectedRoomType(roomTypeOptions[2]);
-            setSelectedStatus({ _id: 'xxHotel', label: 'Select Hotel', value: '' });
+            setSelectedHotel({ _id: 'xxHotel', label: 'Select Hotel', value: '' });
         }
     }, [roomSuccess, reset])
 
@@ -121,7 +121,7 @@ const AddRoom = () => {
                             text='Add Room'
                             css='w-[180px]'
                             loadingText='Adding'
-                            isLoading={isLoading}
+                            isLoading={roomLoading}
                         />
                     </div>
 
