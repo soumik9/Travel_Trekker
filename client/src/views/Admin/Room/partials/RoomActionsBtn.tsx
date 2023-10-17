@@ -25,7 +25,7 @@ const RoomActionBtn = ({ row }: Props) => {
     return (
         <div className='flex gap-[7px]'>
             <Link
-                href={`/user/${row._id}`}
+                href={`/room/${row._id}`}
                 className={cx(
                     actionBtnClass,
                     'bg-warning hover:bg-warning-hover'

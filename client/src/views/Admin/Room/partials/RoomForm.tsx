@@ -1,9 +1,9 @@
 import Input from '@/components/Forms/Input';
 import SelectCustom, { selectItemType } from '@/components/Forms/SelectCustom';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Controller } from 'react-hook-form';
 import { roomTypeOptions, statusOptions } from '../utils/roomConstants';
-import { IHotel } from '@/configs/types';
+import { IHotel, IRoom } from '@/configs/types';
 
 type Props = {
     control: any;
@@ -17,9 +17,10 @@ type Props = {
     setSelectedRoomType: (selectedRoomType: selectItemType | undefined) => void;
     selectedHotel: selectItemType | undefined;
     setSelectedHotel: (selectedHotel: selectItemType | undefined) => void;
+    roomData: IRoom;
 }
 
-const RoomForm = ({ control, errors, error, editPage, selectedStatus, setSelectedStatus, selectedRoomType, setSelectedRoomType, selectedHotel, setSelectedHotel, hotelDatas }: Props) => {
+const RoomForm = ({ control, errors, error, editPage, selectedStatus, setSelectedStatus, selectedRoomType, setSelectedRoomType, selectedHotel, setSelectedHotel, hotelDatas, roomData }: Props) => {
 
     const hotelsOptions = hotelDatas?.map((e: IHotel) => {
         return {
@@ -28,6 +29,14 @@ const RoomForm = ({ control, errors, error, editPage, selectedStatus, setSelecte
             value: e._id as string
         }
     }) || []
+
+    // set data on state
+    useEffect(() => {
+        if (editPage && roomData.hotel) {
+            setSelectedHotel(hotelsOptions.find((item: selectItemType) => item.value === roomData?.hotel as any));
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [roomData.hotel, editPage])
 
     return (
         <div className='grid md:grid-cols-2 gap-x-5 gap-y-7'>

@@ -16,13 +16,9 @@ import toast from 'react-hot-toast'
 
 const AddRoom = () => {
 
-
     // globals
     const [createRoom, { isLoading: roomLoading, isSuccess: roomSuccess }] = useCreateRoomMutation();
     const { data: hotels, isLoading, isError, isSuccess } = useGetHotelsQuery(undefined);
-
-    // console.log(hotels?.data);
-
 
     // hooks
     const { control, handleSubmit, formState: { errors }, reset } = useForm({
@@ -55,7 +51,6 @@ const AddRoom = () => {
     }, [roomSuccess, reset])
 
     const handleAddRoom = (fData: any) => {
-        console.log(selectedHotel);
 
         // final data to send server
         const finalData = {

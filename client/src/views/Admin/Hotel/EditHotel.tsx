@@ -15,8 +15,6 @@ const EditHotel = () => {
     // redux api
     const { data: hotel, isLoading, isError, isSuccess } = useGetHotelQuery(hotelId);
 
-    console.log(hotel);
-
     return (
         <>
             <Breadcrumb

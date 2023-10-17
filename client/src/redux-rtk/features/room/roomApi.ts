@@ -54,7 +54,7 @@ export const roomApi = apiSlice.injectEndpoints({
         // updating hotel data
         updateRoom: builder.mutation({
             query: ({ roomId, updatedData }) => ({
-                url: `hotel/${roomId}`,
+                url: `room/${roomId}`,
                 method: 'PATCH',
                 body: updatedData,
             }),
