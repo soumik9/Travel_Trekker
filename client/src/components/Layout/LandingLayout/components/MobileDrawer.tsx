@@ -4,6 +4,7 @@ import React from 'react'
 import { navItems } from '../utils/LandingConstants';
 import Drawer from '@mui/material/Drawer';
 import Link from 'next/link';
+import { useAppSelector } from '@/hooks/helpers';
 
 const drawerWidth = 240;
 
@@ -16,6 +17,7 @@ type Props = {
 const MobileDrawer = ({ handleDrawerToggle, mobileOpen, ...props }: Props) => {
 
     const { window } = props;
+    const auth = useAppSelector((state) => state.auth);
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -25,16 +27,17 @@ const MobileDrawer = ({ handleDrawerToggle, mobileOpen, ...props }: Props) => {
             </div>
             <Divider />
             <List>
-                {navItems.map((item) => (
-                    <ListItem key={item.title} disablePadding>
-                        <Link href={item.url}>
-                            <ListItemButton sx={{ textAlign: 'center' }}>
-                                <ListItemText primary={item.title} />
-                            </ListItemButton>
-                        </Link>
-
-                    </ListItem>
-                ))}
+                {navItems
+                    .filter((item) => item.auth !== auth.isAuthenticated)
+                    .map((item) => (
+                        <ListItem key={item.title} disablePadding>
+                            <Link href={item.url}>
+                                <ListItemButton sx={{ textAlign: 'center' }}>
+                                    <ListItemText primary={item.title} />
+                                </ListItemButton>
+                            </Link>
+                        </ListItem>
+                    ))}
             </List>
         </Box>
     );

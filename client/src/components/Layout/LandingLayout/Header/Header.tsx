@@ -12,9 +12,12 @@ import Link from 'next/link';
 import ProfileDropdown from '../components/ProfileDropdown';
 import { navItems } from '../utils/LandingConstants';
 import MobileDrawer from '../components/MobileDrawer';
+import { useAppSelector } from '@/hooks/helpers';
 
 
 export default function Header() {
+
+    const auth = useAppSelector((state) => state.auth);
 
     // states
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -53,21 +56,21 @@ export default function Header() {
                     </Typography>
 
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                        {navItems.map((item) => (
-                            <Button key={item.title} sx={{ color: '#fff' }}>
-                                <Link href={item.url}>
-                                    {item.title}
-                                </Link>
-                            </Button>
-                        ))}
+                        {navItems
+                            .filter((item) => item.auth !== auth.isAuthenticated)
+                            .map((item) => (
+                                <Button key={item.title} sx={{ color: '#fff' }}>
+                                    <Link href={item.url}>{item.title}</Link>
+                                </Button>
+                            ))}
                     </Box>
 
                     {/* dropdown */}
-                    <ProfileDropdown
+                    {auth.isAuthenticated ? <ProfileDropdown
                         anchorElUser={anchorElUser}
                         handleOpenUserMenu={handleOpenUserMenu}
                         handleCloseUserMenu={handleCloseUserMenu}
-                    />
+                    /> : null}
 
                 </Toolbar>
             </AppBar>

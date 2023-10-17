@@ -1,12 +1,26 @@
+import { homeLink, loginUrl, signupUrl } from "@/configs/constants";
+
 export const navItems = [
     {
         title: 'Home',
-        url: '/',
+        url: homeLink,
+        auth: false
     },
     {
         title: 'Services',
         url: '/services',
-    }
+        auth: false
+    },
+    {
+        title: 'Login',
+        url: loginUrl,
+        auth: true
+    },
+    {
+        title: 'Signup',
+        url: signupUrl,
+        auth: true
+    },
 ];
 
 

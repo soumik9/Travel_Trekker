@@ -2,7 +2,7 @@ import { Avatar, Box, IconButton, Menu, MenuItem, Tooltip, Typography } from '@m
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks/helpers';
 import Link from 'next/link';
-import { loginUrl } from '@/configs/constants';
+import { loginUrl, profileLink } from '@/configs/constants';
 import { useRouter } from 'next/router';
 import { userLoggedOut } from '@/redux-rtk/features/auth/authSlice';
 import toast from 'react-hot-toast';
@@ -56,7 +56,7 @@ const AdminProfileDropdown = ({ handleOpenUserMenu, anchorElUser, handleCloseUse
                 onClose={handleCloseUserMenu}
             >
 
-                <Link href='/profile'>
+                <Link href={profileLink}>
                     <MenuItem onClick={handleCloseUserMenu}>
                         <Typography textAlign="center">Profile</Typography>
                     </MenuItem>
