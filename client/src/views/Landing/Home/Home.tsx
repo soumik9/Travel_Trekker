@@ -1,13 +1,11 @@
 import React from 'react'
 import AvailableService from './components/AvailableService'
 
-type Props = {}
-
-const Home = (props: Props) => {
+const Home = () => {
     return (
-        <div>
+        <main className='bg-bgDark text-white'>
             <AvailableService />
-        </div>
+        </main>
     )
 }
 
