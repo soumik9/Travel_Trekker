@@ -54,6 +54,27 @@ export const userApi = apiSlice.injectEndpoints({
             }
         }),
 
+        // updating user data
+        updateUserByAuthenticated: builder.mutation({
+            query: ({ updatedData }) => ({
+                url: `user/authenticated-id`,
+                method: 'PATCH',
+                body: updatedData,
+            }),
+            invalidatesTags: (result, error, arg) => [
+                tagTypes.USERS,
+                { type: tagTypes.USER, id: arg.userId }
+            ],
+            async onQueryStarted(arg, { queryFulfilled }) {
+                try {
+                    const result = await queryFulfilled;
+                    toast.success(result.data.message);
+                } catch (error: any) {
+                    toast.error(error.error.data.message);
+                }
+            }
+        }),
+
         deleteUser: builder.mutation({
             query: (userId) => ({
                 url: `user/${userId}`,
@@ -76,5 +97,6 @@ export const {
     useGetUsersQuery,
     useGetUserQuery,
     useUpdateUserMutation,
+    useUpdateUserByAuthenticatedMutation,
     useDeleteUserMutation,
 } = userApi;

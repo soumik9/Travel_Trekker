@@ -7,13 +7,14 @@ import { Controller } from 'react-hook-form';
 type Props = {
     control: any;
     errors: any;
-    error: any;
+    error?: any;
     editPage?: boolean;
-    selectedRole: selectItemType | undefined;
-    setSelectedRole: (selectedRole: selectItemType | undefined) => void;
+    profilePage?: boolean;
+    selectedRole?: selectItemType | undefined;
+    setSelectedRole?: (selectedRole: selectItemType | undefined) => void;
 }
 
-const UserForm = ({ control, errors, selectedRole, setSelectedRole, error, editPage }: Props) => {
+const UserForm = ({ control, errors, selectedRole, setSelectedRole, error, editPage, profilePage }: Props) => {
 
     // states
     const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -50,7 +51,7 @@ const UserForm = ({ control, errors, selectedRole, setSelectedRole, error, editP
                         onChange={field.onChange}
                         error={errors.email?.message}
                         labelRequired
-                        disabled={editPage ? true : false}
+                        disabled={editPage || profilePage ? true : false}
                     />
                 )}
             />
@@ -77,18 +78,16 @@ const UserForm = ({ control, errors, selectedRole, setSelectedRole, error, editP
             />
 
             {/* Select Role */}
-            <SelectCustom
+            {profilePage ? null : <SelectCustom
                 value={selectedRole}
                 defaultValue={selectedRole}
-                onChange={(option: selectItemType) => setSelectedRole(option)}
+                onChange={(option: selectItemType) => setSelectedRole && setSelectedRole(option)}
                 options={rolesOptions}
                 label='Select Role'
                 placeHolder='Select Role'
                 required
                 error={error.role}
-            />
-
-
+            />}
 
         </div>
     )

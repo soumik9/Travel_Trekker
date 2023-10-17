@@ -6,11 +6,14 @@ export enum ENUM_USER_ROLE {
     USER = 'user'
 }
 
+export const linkCls = 'text-purple-600 mt-3 hover:text-purple hover:underline trans'
+
 export const homeLink = '/'
 export const loginUrl = '/auth/login'
 export const signupUrl = '/auth/signup'
 
 export const dashboardLink = '/dashboard'
+export const profileLink = '/profile'
 
 export const usersLink = '/user'
 export const addUserLink = '/user/add'
@@ -29,7 +32,7 @@ export const landingPageLayoutUrls = [
 ]
 
 export const dashboardPageLayoutUrls = [
-    dashboardLink,
+    dashboardLink, profileLink,
     usersLink, addUserLink, editUserLink,
     roomsLink, addRoomLink, editRoomLink,
     hotelsLink, addHotelLink, editHotelLink,

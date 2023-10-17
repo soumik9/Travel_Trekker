@@ -68,20 +68,15 @@ const Users = () => {
             />
 
             <CardLayout title='Users' isLoading={false} isError={isError} isSuccess={isSuccess} >
-
-
-                <div>
-                    <DataTable
-                        columns={columns}
-                        data={users?.data}
-                        highlightOnHover
-                        progressPending={isLoading}
-                        pagination
-                        persistTableHead={true}
-                        paginationPerPage={15}
-                    />
-                </div>
-
+                <DataTable
+                    columns={columns}
+                    data={users?.data}
+                    highlightOnHover
+                    progressPending={isLoading}
+                    pagination
+                    persistTableHead={true}
+                    paginationPerPage={15}
+                />
             </CardLayout>
         </>
     )

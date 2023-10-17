@@ -9,9 +9,9 @@ import Input from '@/components/Forms/Input';
 import CustomButton from '@/components/Button/Button';
 import { ILogin } from '@/configs/types';
 import { useRouter } from 'next/router';
-import { useAppSelector } from '@/hooks/helpers';
+import { cx, useAppSelector } from '@/hooks/helpers';
 import { useLoginMutation } from '@/redux-rtk/features/auth/authApi';
-import { dashboardLink, homeLink, signupUrl } from '@/configs/constants';
+import { dashboardLink, homeLink, linkCls, signupUrl } from '@/configs/constants';
 import Link from 'next/link';
 
 const loginchema = Yup.object().shape({
@@ -121,11 +121,11 @@ const Login = () => {
                     />
 
 
-                    <Link href={signupUrl} className='text-purple-600 mt-3 hover:text-purple hover:underline trans'>
+                    <Link href={signupUrl} className={cx(linkCls)}>
                         Not Registred? Register
                     </Link>
 
-                    <Link href={homeLink} className='text-purple-600 mt-3 hover:text-purple hover:underline trans'>
+                    <Link href={homeLink} className={cx(linkCls)}>
                         Back To Home
                     </Link>
                 </CardActions>

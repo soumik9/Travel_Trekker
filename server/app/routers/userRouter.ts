@@ -10,6 +10,7 @@ import deleteUser from '../controllers/user/deleteUser';
 // middleware
 import auth from '../middleware/auth'
 import { ENUM_USER_ROLE } from '../../utils/constants/constants';
+import updateUserByAuthId from '../controllers/user/updateUserByAuthId';
 
 //routes
 router.get(
@@ -18,7 +19,17 @@ router.get(
     getUsers
 );
 
-router.get('/:userId', auth(ENUM_USER_ROLE.ADMIN), getUser);
+router.get(
+    '/:userId',
+    auth(ENUM_USER_ROLE.ADMIN),
+    getUser
+);
+
+router.patch(
+    '/authenticated-id',
+    auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER),
+    updateUserByAuthId
+);
 
 router.patch(
     '/:userId',
