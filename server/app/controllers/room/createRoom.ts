@@ -10,16 +10,21 @@ const createRoom: RequestHandler = catchAsync(
     async (req: Request, res: Response) => {
 
         // Check if a user with the same email already exists
-        const existingHotel = await Hotel.findOne({ _id: req.body.hotel });
+        const existingHotel = await Hotel.findOne({ _id: req.body.hotel }).populate('rooms');
 
         if (!existingHotel) {
             throw new ApiError(httpStatus.BAD_REQUEST, 'No hotel with this name/id exists.');
         }
 
+        // checking is room exists for hotel
+        if (existingHotel.rooms?.find((item: any) => parseInt(item.roomNumber) === parseInt(req.body.roomNumber))) {
+            throw new ApiError(httpStatus.BAD_REQUEST, 'Room number exists for this hotel already.');
+        }
+
         const result = await Room.create(req.body);
 
         if (result._id) {
-            await Room.updateOne({ _id: req.body.hotel }, {
+            await Hotel.updateOne({ _id: req.body.hotel }, {
                 $push: {
                     rooms: result._id,
                 },

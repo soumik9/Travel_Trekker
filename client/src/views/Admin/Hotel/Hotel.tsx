@@ -5,6 +5,7 @@ import { useGetHotelsQuery } from '@/redux-rtk/features/hotel/hotelApi';
 import React from 'react'
 import DataTable from 'react-data-table-component';
 import HotelActionBtn from './partials/HotelActionsBtn';
+import { IHotel } from '@/configs/types';
 
 const Hotel = () => {
 
@@ -15,22 +16,22 @@ const Hotel = () => {
     const columns: any = [
         {
             name: 'Name',
-            selector: (row: any) => row.name,
+            selector: (row: IHotel) => row.name,
             filterable: true,
             sortable: true,
         },
         {
             name: 'Location',
-            selector: (row: any) => row.location,
+            selector: (row: IHotel) => row.location,
             filterable: true,
         },
         {
             name: 'Rating',
-            selector: (row: any) => row.rating,
+            selector: (row: IHotel) => row.rating,
         },
         {
             name: 'Action',
-            cell: (row: any) => <HotelActionBtn row={row} />,
+            cell: (row: IHotel) => <HotelActionBtn row={row} />,
         },
     ];
 
@@ -48,20 +49,15 @@ const Hotel = () => {
             />
 
             <CardLayout title='Users' isLoading={false} isError={isError} isSuccess={isSuccess} >
-
-
-                <div>
-                    <DataTable
-                        columns={columns}
-                        data={hotels?.data}
-                        highlightOnHover
-                        progressPending={isLoading}
-                        pagination
-                        persistTableHead={true}
-                        paginationPerPage={15}
-                    />
-                </div>
-
+                <DataTable
+                    columns={columns}
+                    data={hotels?.data}
+                    highlightOnHover
+                    progressPending={isLoading}
+                    pagination
+                    persistTableHead={true}
+                    paginationPerPage={15}
+                />
             </CardLayout >
         </>
     )

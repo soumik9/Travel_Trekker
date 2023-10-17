@@ -1,23 +1,23 @@
 import Link from 'next/link'
 import React from 'react'
 import { IoCogOutline, IoTrash } from 'react-icons/io5';
-import { IHotel } from '@/configs/types';
+import { IRoom } from '@/configs/types';
 import { cx } from '@/hooks/helpers';
 import useDelete from '@/hooks/useDelete';
 import CircleLoading from '@/components/Icons/CircleLoading/CircleLoading';
-import { useDeleteHotelMutation } from '@/redux-rtk/features/hotel/hotelApi';
+import { useDeleteRoomMutation } from '@/redux-rtk/features/room/roomApi';
 
 type Props = {
-    row: IHotel;
+    row: IRoom;
 }
 
 const actionBtnClass = 'text-[22px] p-1.5 rounded-lg text-white cursor-pointer trans'
 const actionBtnIconClass = 'cursor-pointer'
 
-const HotelActionBtn = ({ row }: Props) => {
+const RoomActionBtn = ({ row }: Props) => {
 
     // redux query
-    const [deleteHotel, { isLoading }] = useDeleteHotelMutation();
+    const [deleteRoom, { isLoading }] = useDeleteRoomMutation();
 
     // hooks
     const { sendDeleteRequest } = useDelete();
@@ -40,7 +40,7 @@ const HotelActionBtn = ({ row }: Props) => {
                     actionBtnClass,
                     'bg-error hover:bg-error-hover disabled:bg-slate-300'
                 )}
-                onClick={() => sendDeleteRequest(row._id, deleteHotel)}
+                onClick={() => sendDeleteRequest(row._id, deleteRoom)}
             >
                 {isLoading ? <CircleLoading /> : <IoTrash
                     className={cx(actionBtnIconClass)}
@@ -51,4 +51,4 @@ const HotelActionBtn = ({ row }: Props) => {
     )
 }
 
-export default HotelActionBtn
+export default RoomActionBtn

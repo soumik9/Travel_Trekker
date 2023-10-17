@@ -96,7 +96,6 @@ const AddHotel = () => {
                             isLoading={isLoading}
                         />
                     </div>
-
                 </form>
             </CardLayout>
         </>

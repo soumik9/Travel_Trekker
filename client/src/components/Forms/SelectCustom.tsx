@@ -4,7 +4,7 @@ import Select, { StylesConfig } from 'react-select';
 export type selectItemType = {
     _id: string;
     label: string;
-    value: string;
+    value: string | boolean;
 };
 
 type Props = {
