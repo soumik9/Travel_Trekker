@@ -7,6 +7,7 @@ import createRoom from '../controllers/room/createRoom';
 import getRooms from '../controllers/room/getRooms';
 import updateRoom from '../controllers/room/updateRoom';
 import getRoom from '../controllers/room/getRoom';
+import deleteRoom from '../controllers/room/deleteRoom';
 
 //routes
 router.get(
@@ -26,17 +27,16 @@ router.post(
     createRoom
 );
 
-
 router.patch(
     '/:roomId',
     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
     updateRoom
 );
 
-// router.delete(
-//     '/:roomId',
-//     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
-//     deleteHotel
-// );
+router.delete(
+    '/:roomId',
+    auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+    deleteRoom
+);
 
 export default router;

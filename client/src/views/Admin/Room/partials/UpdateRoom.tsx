@@ -89,9 +89,6 @@ const UpdateRoom = ({ data, roomId, hotelDatas }: Props) => {
             return toast.error('Hotel name is required!');
         }
 
-        console.log(updatedData);
-
-
         updateRoom({
             roomId, updatedData, headers: {
                 'Content-Type': 'application/json',

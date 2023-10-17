@@ -80,7 +80,8 @@ export const roomApi = apiSlice.injectEndpoints({
             invalidatesTags: [tagTypes.ROOMS],
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
                 try {
-                    await queryFulfilled;
+                    const result = await queryFulfilled;
+                    toast.success(result.data.message);
                 } catch (error: any) {
                     toast.error(error.error.data.message);
                 }

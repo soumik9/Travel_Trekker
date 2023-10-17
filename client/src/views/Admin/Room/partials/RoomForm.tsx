@@ -36,7 +36,7 @@ const RoomForm = ({ control, errors, error, editPage, selectedStatus, setSelecte
             setSelectedHotel(hotelsOptions.find((item: selectItemType) => item.value === roomData?.hotel as any));
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [roomData.hotel, editPage])
+    }, [roomData?.hotel, editPage])
 
     return (
         <div className='grid md:grid-cols-2 gap-x-5 gap-y-7'>
