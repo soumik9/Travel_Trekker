@@ -8,7 +8,7 @@ const hotelSchema = new Schema<IHotel>({
     },
     image: {
         type: String,
-        default: 'https://asset.cloudinary.com/duc8f3yvq/e300c48d78017427abb1a9b5effe09aa'
+        default: 'https://res.cloudinary.com/duc8f3yvq/image/upload/v1697143683/download_vpdfwv.jpg'
     },
     location: {
         type: String,
