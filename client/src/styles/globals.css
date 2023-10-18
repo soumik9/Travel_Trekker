@@ -31,3 +31,18 @@
   font-size: 14px;
   font-weight: 600;
 }
+
+/* swiper css */
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  color: #3c6382;
+  font-size: 16px !important;
+  font-weight: 700;
+  background: #E7BD8D;
+  padding: 10px 12px;
+  border-radius: 50%;
+}
+
+.swiper-pagination-bullet-active {
+  background: #E7BD8D !important;
+}

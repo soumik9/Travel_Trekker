@@ -157,3 +157,46 @@ export const hotelBookingSurveys = [
     },
 ];
 
+export const reviewSlidersData = [
+    {
+        _id: 'reviewsSlider_1',
+        img: '/reviews/md-yousuf.jpg',
+        name: 'MD Yousuf',
+        rating: 5,
+        review: 'This was my first time using a web developer and I am beyond satisfied. Not only with the customer service. He made  sure my site was exactly what I wanted. Helped me with every aspect. I will definitely be recommending him to other companies or clients. Thans for such good work.',
+        position: 'Operation Manager, Decipher Tech',
+    },
+    {
+        _id: 'reviewsSlider_2',
+        img: '/reviews/tamim.jpg',
+        name: 'Tamim Hasan',
+        rating: 5,
+        review: 'Working with him was a pleasure. His expertise and knowledge of POS management helped us to create a highly efficient and effective sale system. He was able to deliver the project on time and within budget. We gladly recommend anyone looking for a professional developer to hire him.',
+        position: 'Owner, <br /> Tamim Enterprise',
+    },
+    {
+        _id: 'reviewsSlider_3',
+        img: '/reviews/sabit.jpeg',
+        name: 'MD SABIT HOSSAIN',
+        rating: 5,
+        review: 'Their way of work and every cooperation are really appreciating. And thanks to the team for making us a wonderful website for our organization. They find the best out of it. We were pleased with the result and would definitely recommend them',
+        position: 'Logistics and Operation Headr, Yangzhou University',
+    },
+    {
+        _id: 'reviewsSlider_4',
+        img: '/reviews/sabit.jpeg',
+        name: 'MD SABIT HOSSAIN',
+        rating: 5,
+        review: 'Their way of work and every cooperation are really appreciating. And thanks to the team for making us a wonderful website for our organization. They find the best out of it. We were pleased with the result and would definitely recommend them',
+        position: 'Logistics and Operation Headr, Yangzhou University',
+    },
+    {
+        _id: 'reviewsSlider_5',
+        img: '/reviews/sabit.jpeg',
+        name: 'MD SABIT HOSSAIN',
+        rating: 5,
+        review: 'Their way of work and every cooperation are really appreciating. And thanks to the team for making us a wonderful website for our organization. They find the best out of it. We were pleased with the result and would definitely recommend them',
+        position: 'Logistics and Operation Headr, Yangzhou University',
+    },
+]
+

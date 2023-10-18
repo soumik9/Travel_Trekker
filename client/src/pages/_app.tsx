@@ -6,6 +6,11 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router';
 import { Provider } from 'react-redux';
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 export default function App({ Component, pageProps }: AppProps) {
 
   const router = useRouter();

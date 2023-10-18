@@ -3,6 +3,7 @@ import AvailableService from './components/AvailableService'
 import UpcomingService from './components/UpcomingService'
 import HomeHotels from './components/HomeHotels'
 import CompanyOverview from './components/CompanyOverview'
+import ClientsReview from './components/ClientsReview'
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <UpcomingService />
             <HomeHotels />
             <CompanyOverview />
+            <ClientsReview />
         </main>
     )
 }
