@@ -18,7 +18,7 @@ const reviewSchema = new Schema<IReview>({
     },
     user: {
         type: Types.ObjectId,
-        ref: "Room",
+        ref: "User",
         required: [true, 'User id field is required']
     },
 }, { timestamps: true });

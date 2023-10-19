@@ -4,6 +4,7 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
 import { reviewSlidersData } from '@/configs/constants';
 import parse from 'html-react-parser';
+import { useGetReviewsQuery } from '@/redux-rtk/features/review/reviewApi';
 
 const swiperOptions = {
     navigation: true,
@@ -26,27 +27,37 @@ const swiperOptions = {
 };
 
 const HRSlider = () => {
+
+    // get roles from redux api
+    const { data: reviews, isLoading } = useGetReviewsQuery(undefined);
+
     return (
+        <>
+            {isLoading ? <>Loading...</> :
+                <Swiper {...swiperOptions}>
+                    {reviews?.data?.map((slideContent: any, index: number) => (<SwiperSlide key={slideContent._id} virtualIndex={index}>
+                        <div className='bg-lightDark lg:p-[40px] p-[20px] rounded-md min-h-[300px]'>
+                            <p className='leading-[160%] text-purple text-justify'>{slideContent.review.slice(0, 250)}...</p>
 
-        <Swiper {...swiperOptions}>
-            {reviewSlidersData.map((slideContent, index) => (<SwiperSlide key={slideContent._id} virtualIndex={index}>
-                <div className='bg-lightDark lg:p-[40px] p-[20px] rounded-md min-h-[420px]'>
-                    <p className='leading-[160%] text-purple text-justify'>{slideContent.review}</p>
+                            <div className='mt-8 flex items-center gap-8'>
 
-                    <div className='mt-8 flex items-center gap-8'>
+                                <Image
+                                    src={slideContent.user?.image}
+                                    width={60}
+                                    height={60}
+                                    alt={slideContent.user?.name}
+                                    className='rounded-full p-[1px] border border-primary object-cover'
+                                />
 
-                        <Image src={slideContent.img} width={60} height={60} alt={slideContent.name} className='rounded-full p-[1px] border border-primary object-cover' />
-
-                        <div>
-                            <h6 className='text-primary'>{slideContent.name}</h6>
-                            <p className='text-secondary'>{parse(slideContent.position)}</p>
+                                <div>
+                                    <h6 className='text-primary'>{slideContent.user?.name}</h6>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </SwiperSlide>
-            ))}
-        </Swiper>
-
+                    </SwiperSlide>
+                    ))}
+                </Swiper>}
+        </>
     )
 }
 
