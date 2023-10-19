@@ -5,7 +5,7 @@
   "author": "soumik ahammed",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node dist/index.js",
     "build": "tsc",
     "dev": "ts-node-dev --respawn --transpile-only index.ts",
     "start-dev": "nodemon index.js",
