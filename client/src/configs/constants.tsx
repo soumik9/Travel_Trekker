@@ -45,6 +45,8 @@ export const newsLink = '/news'
 export const addNewsLink = '/news/add'
 export const editNewsLink = '/news/[newsId]'
 
+export const reviewLink = '/review/[orderId]'
+
 export const ordersLink = '/order'
 export const orderEditLink = '/order/[orderId]'
 
@@ -64,7 +66,8 @@ export const dashboardPageLayoutUrls = [
     hotelsLink, addHotelLink, editHotelLink,
     faqsLink, addFAQLink, editFAQLink,
     newsLink, addNewsLink, editNewsLink,
-    orderHistoryLink, ordersLink, orderEditLink
+    orderHistoryLink, ordersLink, orderEditLink,
+    reviewLink
 ]
 
 export const rolesOptions: selectItemType[] = [

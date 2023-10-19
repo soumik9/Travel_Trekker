@@ -1,5 +1,4 @@
 import { Schema, Types, model } from "mongoose";
-import { IFaq } from "../interfaces/FaqInterface";
 import { IBooking } from "../interfaces/BookingInterface";
 
 const bookingSchema = new Schema<IBooking>({
@@ -37,7 +36,11 @@ const bookingSchema = new Schema<IBooking>({
         },
         default: 'pending'
     },
+    isReviewed: {
+        type: Boolean,
+        default: false
+    },
 }, { timestamps: true });
 
-const Booking = model<IFaq>("Booking", bookingSchema);
+const Booking = model<IBooking>("Booking", bookingSchema);
 export default Booking;

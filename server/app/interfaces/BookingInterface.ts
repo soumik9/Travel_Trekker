@@ -11,4 +11,5 @@ export interface IBooking {
     totalDays: number;
     totalCost: number;
     status: 'pending' | 'accetpt' | 'reject' | 'adjust' | 'cancel';
+    isReviewed: boolean;
 }

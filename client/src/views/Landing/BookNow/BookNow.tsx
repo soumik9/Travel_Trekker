@@ -11,7 +11,7 @@ import { useForm } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 import { bookingDefaultValues, bookingSchema } from './utils/bookNowConstant';
 import { useCreateBookingMutation } from '@/redux-rtk/features/booking/bookingApi';
-import { homeLink, loginUrl } from '@/configs/constants';
+import { homeLink, orderHistoryLink } from '@/configs/constants';
 import { userLoggedOut } from '@/redux-rtk/features/auth/authSlice';
 
 const BookNow = () => {
@@ -47,7 +47,7 @@ const BookNow = () => {
     useEffect(() => {
         if (!auth.isAuthenticated) {
             dispatch(userLoggedOut());
-            push(loginUrl);
+            push(orderHistoryLink);
         }
     }, [auth.isAuthenticated, dispatch, push])
 
@@ -95,6 +95,9 @@ const BookNow = () => {
                     </p>
                     <p className='text-sm lg:text-base text-center cursor-default'>
                         Total Days - {totalDays} DAY
+                    </p>
+                    <p className='text-sm lg:text-base text-center cursor-default'>
+                        The date you selected from that date 11.00 AM to next day 11.00AM valid booking.
                     </p>
                 </div>
 
