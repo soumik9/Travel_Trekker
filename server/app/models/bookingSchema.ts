@@ -1,6 +1,8 @@
 import { Schema, Types, model } from "mongoose";
 import { IBooking } from "../interfaces/BookingInterface";
 
+export const bookingStatuses = ['pending', 'accept', 'reject', 'adjust', 'cancel']
+
 const bookingSchema = new Schema<IBooking>({
     user: {
         type: Types.ObjectId,
@@ -31,7 +33,7 @@ const bookingSchema = new Schema<IBooking>({
     status: {
         type: String,
         enum: {
-            values: ['pending', 'accept', 'reject', 'adjust', 'cancel'],
+            values: bookingStatuses,
             message: `Role value can not be {VALUE}, must be accept/reject/adjust/cancel`
         },
         default: 'pending'

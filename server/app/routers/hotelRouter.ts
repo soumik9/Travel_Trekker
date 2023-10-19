@@ -8,6 +8,8 @@ import getHotels from '../controllers/hotel/getHotels';
 import deleteHotel from '../controllers/hotel/deleteHotel';
 import updateHotel from '../controllers/hotel/updateHotel';
 import getHotel from '../controllers/hotel/getHotel';
+import validateRequest from '../middleware/validateRequest';
+import { HotelValidation } from '../validations/hotelValidation';
 
 //routes
 router.get(
@@ -23,12 +25,14 @@ router.get(
 
 router.post(
     '/',
+    validateRequest(HotelValidation.createHotelZodSchema),
     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
     createHotel
 );
 
 router.patch(
     '/:hotelId',
+    validateRequest(HotelValidation.updateHotelZodSchema),
     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
     updateHotel
 );

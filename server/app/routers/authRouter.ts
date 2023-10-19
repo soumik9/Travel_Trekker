@@ -21,11 +21,13 @@ router.post(
 
 router.post(
     '/user/signup',
+    validateRequest(AuthValidation.signupUserZodSchema),
     userSignup
 );
 
 router.post(
     '/signup',
+    validateRequest(AuthValidation.signupZodSchema),
     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
     signup
 );

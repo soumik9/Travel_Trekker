@@ -6,6 +6,8 @@ import validator from "validator";
 import { ENUM_USER_ROLE } from '../../utils/constants/constants';
 import config from '../../utils/server/config';
 
+export const userRoles = [ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.USER]
+
 const userSchema = new Schema<IUser, {}, IUserMethods>({
     name: {
         type: String,
@@ -28,7 +30,7 @@ const userSchema = new Schema<IUser, {}, IUserMethods>({
         lowercase: true,
         required: [true, 'Role name is required'],
         enum: {
-            values: [ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.USER],
+            values: userRoles,
             message: `Role value can not be {VALUE}, must be ${ENUM_USER_ROLE.ADMIN}/${ENUM_USER_ROLE.SUPER_ADMIN}/${ENUM_USER_ROLE.USER}`
         }
     },

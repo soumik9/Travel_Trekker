@@ -16,6 +16,7 @@ Backend Live Link [Backend Travel_Trekker](https://travel-trekker-server.vercel.
 <hr />
 
 - [x] [POST] - [https://travel-trekker-server.vercel.app/api/v1/auth/signup](https://travel-trekker-server.vercel.app/api/v1/auth/signup) <br /> <br />
+- [x] [POST] - [https://travel-trekker-server.vercel.app/api/v1/auth/user/signup](https://travel-trekker-server.vercel.app/api/v1/auth/user/signup) <br /> <br />
 - [x] [POST] - [https://travel-trekker-server.vercel.app/api/v1/auth/signin](https://travel-trekker-server.vercel.app/api/v1/auth/signin) <br /> <br />
 <br />
 

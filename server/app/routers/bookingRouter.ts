@@ -8,6 +8,8 @@ import GetOrdersById from '../controllers/booking/GetOrdersById';
 import getBookings from '../controllers/booking/GetBookings';
 import GetBooking from '../controllers/booking/GetOrder';
 import UpdateBookingStatusAdmin from '../controllers/booking/UpdateBookingStatusAdmin';
+import validateRequest from '../middleware/validateRequest';
+import { BookingValidation } from '../validations/boookingValidation';
 
 
 //routes
@@ -31,12 +33,14 @@ router.get(
 
 router.post(
     '/',
+    validateRequest(BookingValidation.createBookingZodSchema),
     auth(ENUM_USER_ROLE.USER, ENUM_USER_ROLE.ADMIN),
     createOrderBook
 );
 
 router.patch(
     '/update-status-admin/:bookingId',
+    validateRequest(BookingValidation.updateBookingStatusZodSchema),
     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
     UpdateBookingStatusAdmin
 );

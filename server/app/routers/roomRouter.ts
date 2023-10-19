@@ -8,6 +8,8 @@ import getRooms from '../controllers/room/getRooms';
 import updateRoom from '../controllers/room/updateRoom';
 import getRoom from '../controllers/room/getRoom';
 import deleteRoom from '../controllers/room/deleteRoom';
+import validateRequest from '../middleware/validateRequest';
+import { RoomValidation } from '../validations/roomValidation';
 
 //routes
 router.get(
@@ -23,12 +25,14 @@ router.get(
 
 router.post(
     '/',
+    validateRequest(RoomValidation.createRoomZodSchema),
     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
     createRoom
 );
 
 router.patch(
     '/:roomId',
+    validateRequest(RoomValidation.updateRoomZodSchema),
     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
     updateRoom
 );

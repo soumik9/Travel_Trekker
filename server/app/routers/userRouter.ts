@@ -11,6 +11,8 @@ import deleteUser from '../controllers/user/deleteUser';
 import auth from '../middleware/auth'
 import { ENUM_USER_ROLE } from '../../utils/constants/constants';
 import updateUserByAuthId from '../controllers/user/updateUserByAuthId';
+import validateRequest from '../middleware/validateRequest';
+import { AuthValidation } from '../validations/authValication';
 
 //routes
 router.get(
@@ -27,12 +29,14 @@ router.get(
 
 router.patch(
     '/authenticated-id',
+    validateRequest(AuthValidation.updateUserZodSchema),
     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER),
     updateUserByAuthId
 );
 
 router.patch(
     '/:userId',
+    validateRequest(AuthValidation.updateUserZodSchema),
     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
     updateUser
 );
