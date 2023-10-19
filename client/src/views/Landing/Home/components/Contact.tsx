@@ -31,7 +31,7 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <SectionLayout css='lg:pt-[40px]' id='contactMe'>
+        <SectionLayout css='lg:pt-[40px] contact' id='contactMe'>
 
             <SectionTop
                 subTitle='Contact Us'
