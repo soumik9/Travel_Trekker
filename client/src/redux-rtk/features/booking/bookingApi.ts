@@ -32,6 +32,21 @@ export const bookingApi = apiSlice.injectEndpoints({
             }
         }),
 
+        // get hotel endpoint here
+        getBooking: builder.query({
+            query: (orderId) => `booking/${orderId}`,
+            providesTags: (result, error, arg) => [{
+                type: tagTypes.ROOM, id: arg
+            }],
+            async onQueryStarted(arg, { queryFulfilled }) {
+                try {
+                    await queryFulfilled;
+                } catch (error: any) {
+                    console.log(error?.error?.data?.message);
+                }
+            }
+        }),
+
         // register room here
         createBooking: builder.mutation({
             query: (data) => ({
@@ -50,11 +65,33 @@ export const bookingApi = apiSlice.injectEndpoints({
             }
         }),
 
+        // updating hotel data
+        updateBookingStatusAdmin: builder.mutation({
+            query: ({ bookingId, updatedData }) => ({
+                url: `booking/update-status-admin/${bookingId}`,
+                method: 'PATCH',
+                body: updatedData,
+            }),
+            invalidatesTags: (result, error, arg) => [
+                tagTypes.BOOKINGS,
+                { type: tagTypes.BOOKING, id: arg.bookingId }
+            ],
+            async onQueryStarted(arg, { queryFulfilled }) {
+                try {
+                    const result = await queryFulfilled;
+                    toast.success(result.data.message);
+                } catch (error: any) {
+                    toast.error(error.error.data.message);
+                }
+            }
+        }),
     })
 });
 
 export const {
     useCreateBookingMutation,
     useGetBookingsByIdQuery,
-    useGetBookingsQuery
+    useGetBookingsQuery,
+    useGetBookingQuery,
+    useUpdateBookingStatusAdminMutation
 } = bookingApi;

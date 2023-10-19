@@ -55,3 +55,11 @@ export interface IBooking {
     totalCost: number;
     status: 'pending' | 'accetpt' | 'reject' | 'adjust' | 'cancel';
 }
+
+export interface IReview {
+    _id?: string;
+    review: string;
+    room: string | IRoom;
+    user: string | IUser;
+    booking: string | IBooking;
+}

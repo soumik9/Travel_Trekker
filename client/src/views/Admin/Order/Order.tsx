@@ -5,6 +5,7 @@ import { cx } from '@/hooks/helpers';
 import { useGetBookingsQuery } from '@/redux-rtk/features/booking/bookingApi';
 import React from 'react'
 import DataTable from 'react-data-table-component';
+import OrderActionBtn from './partials/OrderActionBtn';
 
 const Order = () => {
     // get roles from redux api
@@ -56,10 +57,10 @@ const Order = () => {
                 {row.status}
             </div>,
         },
-        // {
-        //     name: 'Action',
-        //     cell: (row: any) => <ActionsBtn row={row} />,
-        // },
+        {
+            name: 'Action',
+            cell: (row: any) => <OrderActionBtn row={row} />,
+        },
     ];
 
     return (

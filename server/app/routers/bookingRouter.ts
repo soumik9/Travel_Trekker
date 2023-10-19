@@ -6,25 +6,30 @@ import { ENUM_USER_ROLE } from '../../utils/constants/constants';
 import createOrderBook from '../controllers/booking/CreateOrderBook';
 import GetOrdersById from '../controllers/booking/GetOrdersById';
 import getBookings from '../controllers/booking/GetBookings';
+import GetBooking from '../controllers/booking/GetOrder';
+import UpdateBookingStatusAdmin from '../controllers/booking/UpdateBookingStatusAdmin';
+
 
 //routes
+router.get(
+    '/by-auth-id',
+    auth(ENUM_USER_ROLE.USER),
+    GetOrdersById
+);
+
 router.get(
     '/',
     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
     getBookings
 );
 
-// router.get(
-//     '/:faqId',
-//     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
-//     getFaq
-// );
-
 router.get(
-    '/by-auth-id',
-    auth(ENUM_USER_ROLE.USER),
-    GetOrdersById
+    '/:orderId',
+    auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+    GetBooking
 );
+
+
 
 router.post(
     '/',
@@ -32,11 +37,11 @@ router.post(
     createOrderBook
 );
 
-// router.patch(
-//     '/:faqId',
-//     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
-//     updateFaq
-// );
+router.patch(
+    '/update-status-admin/:bookingId',
+    auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+    UpdateBookingStatusAdmin
+);
 
 // router.delete(
 //     '/:faqId',

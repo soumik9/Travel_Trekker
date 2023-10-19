@@ -121,6 +121,7 @@ export default function DashboardLayout({ children }: Props) {
                 open={open}
             >
                 <DrawerHeader>
+                    Travel Trekker
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'ltr' ? <BsChevronLeft /> : <BsChevronRight />}
                     </IconButton>

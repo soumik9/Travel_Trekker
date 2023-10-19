@@ -5,6 +5,7 @@ import { cx } from '@/hooks/helpers';
 import { useGetBookingsByIdQuery } from '@/redux-rtk/features/booking/bookingApi';
 import React from 'react'
 import DataTable from 'react-data-table-component';
+import OHActionBtn from './partals/OHActionBtn';
 
 const OrderHistory = () => {
 
@@ -51,10 +52,10 @@ const OrderHistory = () => {
                 {row.status}
             </div>,
         },
-        // {
-        //     name: 'Action',
-        //     cell: (row: any) => <ActionsBtn row={row} />,
-        // },
+        {
+            name: 'Action',
+            cell: (row: any) => <OHActionBtn row={row} />,
+        },
     ];
 
     return (

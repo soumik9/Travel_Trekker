@@ -60,9 +60,6 @@ const HotelForm = ({ control, errors, selectedLocation, setSelectedLocation, err
                 error={error.location}
                 isSearchable
             />
-
-
-
         </div>
     )
 }
