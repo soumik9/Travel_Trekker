@@ -1,40 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Travel_Trekker
 
-## Getting Started
+Frontend Live Link [Travel_Trekker](https://travel-trekker.vercel.app/)
+Backend Live Link [Backend Travel_Trekker](https://travel-trekker-server.vercel.app/)
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Frontend Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [x] Home Page [Hero, Available Services, Upcoming Services, Available Hotels, Company Overview, Clients Review, Latest News, FAQ, Contact]
+- [x] Signup page
+- [x] Signin page
+- [x] Logout (after authentication)
+- [x] Rooms page (All rooms can filter by Hotel Name, Hotel Location and Room Number)
+- [x] Can book a room on Book now page. [Authentication Required]
+- [x] After success booking redirect to user dashboard. [Authentication Required, User Role]
+- [x] Can Update profile user dashboard. [Authentication Required, User, Admin & Super Admin Role]
+- [x] Can show booking history with status and can cancel the booking. [Authentication Required, User]
+    <br />
+- [x] Can manage FAQ section contents. [Authentication Required, Admin & Super Admin Role]
+- [x] Can manage News section contents. [Authentication Required, Admin & Super Admin Role]
+- [x] Can manage Users. [Authentication Required, Admin & Super Admin Role]
+- [x] Can manage Hotels. [Authentication Required, Admin & Super Admin Role]
+- [x] Can manage Rooms. [Authentication Required, Admin & Super Admin Role]
+- [x] Can manage Orders. [Authentication Required, Admin & Super Admin Role]
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Frontend Technologies 
+- [x] Next JS
+- [x] Typescript
+- [x] Redux Toolkit & RTK Query
+- [x] React hook forms with yup validation
+- [x] React hot toast & Sweetalert

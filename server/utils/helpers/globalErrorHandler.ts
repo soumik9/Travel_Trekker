@@ -4,7 +4,8 @@ import ApiError from '../errors/ApiError';
 import handleValidationError from '../errors/handleValidationError';
 import handleCastError from '../errors/handleCastError';
 import { IErrorMessage } from '../type/types';
-
+import handleZodError from '../errors/handleZodError';
+import { ZodError } from 'zod';
 
 const globalErrorHandler: ErrorRequestHandler = (
     error,
@@ -19,6 +20,11 @@ const globalErrorHandler: ErrorRequestHandler = (
 
     if (error?.name === 'ValidationError') {
         const simplifiedError = handleValidationError(error);
+        statusCode = simplifiedError.statusCode;
+        message = simplifiedError.message;
+        errorMessages = simplifiedError.errorMessages;
+    } else if (error instanceof ZodError) {
+        const simplifiedError = handleZodError(error);
         statusCode = simplifiedError.statusCode;
         message = simplifiedError.message;
         errorMessages = simplifiedError.errorMessages;

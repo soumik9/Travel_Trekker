@@ -1,5 +1,5 @@
+import { cx } from '@/hooks/helpers';
 import React from 'react'
-import { cx } from 'src/hooks/helpers';
 
 type Props = {
     children: React.ReactNode;
