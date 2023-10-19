@@ -8,6 +8,7 @@ import userRouter from './userRouter'
 import faqRouter from './faqRouter'
 import bookingRouter from './bookingRouter'
 import reviewRouter from './reviewRouter'
+import newsRouter from './newsRouter'
 
 
 const apiRoutes: { path: string, route: any }[] = [
@@ -38,6 +39,10 @@ const apiRoutes: { path: string, route: any }[] = [
     {
         path: '/review',
         route: reviewRouter,
+    },
+    {
+        path: '/news',
+        route: newsRouter,
     },
 ];
 
