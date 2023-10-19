@@ -9,7 +9,7 @@ import { SortOrder } from "mongoose";
 import Room from "../../models/roomSchema";
 import { IRoom } from "../../interfaces/RoomInterface";
 
-export const roomFilterableFields: string[] = ['searchTerm', 'roomNumber', 'hotel.name'];
+export const roomFilterableFields: string[] = ['searchTerm', 'roomNumber', 'hotel.name', 'hotel._id'];
 export const roomSearchableFields: string[] = ['email']
 
 const getRooms: RequestHandler = catchAsync(
@@ -38,6 +38,15 @@ const getRooms: RequestHandler = catchAsync(
                 })),
             });
         }
+
+        // Decode URL-encoded values in the filtersData object
+        for (const key in filtersData) {
+            if (filtersData.hasOwnProperty(key)) {
+                filtersData[key] = decodeURIComponent(filtersData[key] as any);
+            }
+        }
+
+        // console.log(filtersData);
 
         // if any filterable query make it on object
         if (Object.keys(filtersData).length) {

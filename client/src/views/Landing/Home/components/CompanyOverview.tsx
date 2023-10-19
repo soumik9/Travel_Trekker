@@ -21,12 +21,12 @@ const CompanyOverview = () => {
 
                     {hotelOverviews.map((item, index) => <div
                         key={`over${index}`}
-                        className="flex md:flex-col xl:flex-row md:justify-center xl:justify-start items-center gap-4 p-4 bg-lightDark hover:bg-bgDark trans border border-primary rounded-md cursor-default"
+                        className="flex md:flex-col xl:flex-row md:justify-center xl:justify-start items-center gap-4 xl:gap-1 p-4 bg-lightDark hover:bg-bgDark trans border border-primary rounded-md cursor-default"
                     >
-                        <Image src={item.img} width={125} height={100} alt={item.title} />
+                        <Image src={item.img} width={120} height={100} alt={item.title} />
 
                         <div>
-                            <p className="mb-2 font-medium text-primary text-[18px] lg:text-[22px] md:text-center xl:text-start">{item.title}</p>
+                            <p className="mb-2 font-medium text-primary text-[18px] lg:text-[20px] md:text-center xl:text-start">{item.title}</p>
                             <p className="text-sm font-normal text-secondary text-justify">{item.desc}</p>
                         </div>
                     </div>)}

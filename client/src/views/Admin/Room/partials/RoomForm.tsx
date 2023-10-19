@@ -17,7 +17,7 @@ type Props = {
     setSelectedRoomType: (selectedRoomType: selectItemType | undefined) => void;
     selectedHotel: selectItemType | undefined;
     setSelectedHotel: (selectedHotel: selectItemType | undefined) => void;
-    roomData: IRoom;
+    roomData?: IRoom;
 }
 
 const RoomForm = ({ control, errors, error, editPage, selectedStatus, setSelectedStatus, selectedRoomType, setSelectedRoomType, selectedHotel, setSelectedHotel, hotelDatas, roomData }: Props) => {
@@ -32,7 +32,7 @@ const RoomForm = ({ control, errors, error, editPage, selectedStatus, setSelecte
 
     // set data on state
     useEffect(() => {
-        if (editPage && roomData.hotel) {
+        if (editPage && roomData?.hotel) {
             setSelectedHotel(hotelsOptions.find((item: selectItemType) => item.value === roomData?.hotel as any));
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

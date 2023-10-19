@@ -14,8 +14,11 @@ export enum ENUM_USER_ROLE {
 export const linkCls = 'text-purple-600 mt-3 hover:text-purple hover:underline trans'
 
 export const homeLink = '/'
+export const landingRoomsLink = '/rooms'
 export const loginUrl = '/auth/login'
 export const signupUrl = '/auth/signup'
+export const bookNowUrl = '/book-now/[roomId]'
+export const roomsByHotelUrl = '/rooms-by-hotel/[hotelId]'
 
 export const dashboardLink = '/dashboard'
 export const profileLink = '/profile'
@@ -41,7 +44,10 @@ export const addNewsLink = '/news/add'
 export const editNewsLink = '/news/[newsId]'
 
 export const landingPageLayoutUrls = [
-    homeLink
+    homeLink,
+    landingRoomsLink,
+    bookNowUrl,
+    roomsByHotelUrl,
 ]
 
 export const dashboardPageLayoutUrls = [
@@ -127,45 +133,6 @@ export const hotelOverviews = [
         desc: 'The only way to leave a review is to first make a booking. Thats how we know our reviews come form real guests who have stayed at the property',
     }
 ]
-
-export const hotelBookingSurveys = [
-    {
-        title: "Customer Satisfaction Survey",
-        description: "Help us improve our services by providing your feedback. Rate your recent stay with us and share your comments.",
-        questions: [
-            "How satisfied were you with your stay?",
-            "Would you recommend our hotel to others?",
-            "What can we do to enhance your experience in the future?",
-        ],
-    },
-    {
-        title: "Travel Preferences Survey",
-        description: "Tell us about your travel preferences, such as room type, amenities, and additional services you'd like to have during your stay.",
-        questions: [
-            "What type of room do you prefer when booking a hotel?",
-            "Which amenities are important to you during your stay?",
-            "Do you usually take advantage of additional services, such as room service or spa treatments?",
-        ],
-    },
-    {
-        title: "Destination Experience Survey",
-        description: "Share your experiences and recommendations about the destinations you've visited through our hotel booking services.",
-        questions: [
-            "Tell us about a memorable experience you had during your trip.",
-            "Which destination would you recommend to other travelers?",
-            "Any tips for travelers visiting a specific location?",
-        ],
-    },
-    {
-        title: "Booking Process Feedback Survey",
-        description: "Help us streamline the booking process by providing your feedback on our website or app's usability and convenience.",
-        questions: [
-            "How easy was it to find and book a hotel on our platform?",
-            "Did you encounter any issues during the booking process?",
-            "Any suggestions for improving our website or app?",
-        ],
-    },
-];
 
 export const reviewSlidersData = [
     {

@@ -7,8 +7,8 @@ export const navItems = [
         auth: false
     },
     {
-        title: 'Services',
-        url: '/services',
+        title: 'Rooms',
+        url: '/rooms',
         auth: false
     },
     {

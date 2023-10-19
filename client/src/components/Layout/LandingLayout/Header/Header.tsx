@@ -13,6 +13,7 @@ import ProfileDropdown from '../components/ProfileDropdown';
 import { navItems } from '../utils/LandingConstants';
 import MobileDrawer from '../components/MobileDrawer';
 import { useAppSelector } from '@/hooks/helpers';
+import { homeLink } from '@/configs/constants';
 
 
 export default function Header() {
@@ -31,7 +32,7 @@ export default function Header() {
     return (
         <Box sx={{ display: 'flex' }} >
             <CssBaseline />
-            <div className='h-16'></div>
+            <div className='h-14 md:h-16'></div>
 
             <AppBar component="nav" className='!bg-lightDark container'>
                 <Toolbar className='flex justify-between'>
@@ -45,15 +46,19 @@ export default function Header() {
                         <AiOutlineMenu />
                     </IconButton>
 
+
                     <Typography
                         variant="h6"
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-                        className='md:!flex items-center text-secondary'
+
                     >
-                        <Image src='/sm-logo.png' width={60} height={60} alt='small logo' />
-                        <i>T</i>ravel &nbsp;<i>T</i>rekker
+                        <Link href={homeLink} className='md:!flex items-center text-secondary'>
+                            <Image src='/sm-logo.png' width={60} height={60} alt='small logo' />
+                            <i>T</i>ravel &nbsp;<i>T</i>rekker
+                        </Link>
                     </Typography>
+
 
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                         {navItems

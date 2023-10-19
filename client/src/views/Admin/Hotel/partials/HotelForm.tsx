@@ -40,7 +40,6 @@ const HotelForm = ({ control, errors, selectedLocation, setSelectedLocation, err
                     <Input
                         label="Rating"
                         id="rating"
-                        type="rating"
                         placeholder="4.5"
                         value={field.value}
                         onChange={field.onChange}
