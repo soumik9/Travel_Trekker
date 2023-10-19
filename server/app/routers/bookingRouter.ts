@@ -10,6 +10,7 @@ import GetBooking from '../controllers/booking/GetOrder';
 import UpdateBookingStatusAdmin from '../controllers/booking/UpdateBookingStatusAdmin';
 import validateRequest from '../middleware/validateRequest';
 import { BookingValidation } from '../validations/boookingValidation';
+import UpdateCancelStatus from '../controllers/booking/UpdateCancelStatus';
 
 
 //routes
@@ -43,6 +44,12 @@ router.patch(
     validateRequest(BookingValidation.updateBookingStatusZodSchema),
     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
     UpdateBookingStatusAdmin
+);
+
+router.patch(
+    '/user/update-cancel-admin/:bookingId',
+    auth(ENUM_USER_ROLE.USER),
+    UpdateCancelStatus
 );
 
 // router.delete(

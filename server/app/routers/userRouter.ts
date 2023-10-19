@@ -23,7 +23,7 @@ router.get(
 
 router.get(
     '/:userId',
-    auth(ENUM_USER_ROLE.ADMIN),
+    auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER),
     getUser
 );
 

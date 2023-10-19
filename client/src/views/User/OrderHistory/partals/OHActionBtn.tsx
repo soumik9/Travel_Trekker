@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { cx } from '@/hooks/helpers';
+import { useUpdateBookingStatusCancelUserMutation } from '@/redux-rtk/features/booking/bookingApi';
 
 type Props = {
     row: any;
@@ -9,6 +10,23 @@ type Props = {
 const actionBtnClass = ' p-1.5 rounded-lg text-white cursor-pointer trans'
 
 const OHActionBtn = ({ row }: Props) => {
+
+    // rtk
+    const [updateBookingStatusCancelUser, { isLoading: updateLoading, isSuccess }] = useUpdateBookingStatusCancelUserMutation();
+
+
+    const handleUpdateStatusCancel = () => {
+
+        // final data to send server
+        const updatedData = {}
+        const bookingId = row._id;
+
+        updateBookingStatusCancelUser({
+            bookingId, updatedData, headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+    }
 
     return (
         <div className='flex gap-[7px]'>
@@ -26,18 +44,18 @@ const OHActionBtn = ({ row }: Props) => {
                 </button>
             </Link>
 
-            <Link
-                href={`/review/${row._id}`}
+
+            <button
+                className={cx(
+                    actionBtnClass,
+                    'bg-error hover:bg-error-hover disabled:bg-slate-200 disabled:cursor-not-allowed'
+                )}
+                onClick={handleUpdateStatusCancel}
+                disabled={row.status === 'cancel' || row.status === 'accept'}
             >
-                <button
-                    className={cx(
-                        actionBtnClass,
-                        'bg-error hover:bg-error-hover disabled:bg-slate-200 disabled:cursor-not-allowed'
-                    )}
-                >
-                    Cancel
-                </button>
-            </Link>
+                Cancel
+            </button>
+
         </div>
     )
 }

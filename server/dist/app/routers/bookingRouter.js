@@ -12,12 +12,16 @@ const GetOrdersById_1 = __importDefault(require("../controllers/booking/GetOrder
 const GetBookings_1 = __importDefault(require("../controllers/booking/GetBookings"));
 const GetOrder_1 = __importDefault(require("../controllers/booking/GetOrder"));
 const UpdateBookingStatusAdmin_1 = __importDefault(require("../controllers/booking/UpdateBookingStatusAdmin"));
+const validateRequest_1 = __importDefault(require("../middleware/validateRequest"));
+const boookingValidation_1 = require("../validations/boookingValidation");
+const UpdateCancelStatus_1 = __importDefault(require("../controllers/booking/UpdateCancelStatus"));
 //routes
 router.get('/by-auth-id', (0, auth_1.default)(constants_1.ENUM_USER_ROLE.USER), GetOrdersById_1.default);
 router.get('/', (0, auth_1.default)(constants_1.ENUM_USER_ROLE.SUPER_ADMIN, constants_1.ENUM_USER_ROLE.ADMIN), GetBookings_1.default);
 router.get('/:orderId', (0, auth_1.default)(constants_1.ENUM_USER_ROLE.SUPER_ADMIN, constants_1.ENUM_USER_ROLE.ADMIN, constants_1.ENUM_USER_ROLE.USER), GetOrder_1.default);
-router.post('/', (0, auth_1.default)(constants_1.ENUM_USER_ROLE.USER, constants_1.ENUM_USER_ROLE.ADMIN), CreateOrderBook_1.default);
-router.patch('/update-status-admin/:bookingId', (0, auth_1.default)(constants_1.ENUM_USER_ROLE.SUPER_ADMIN, constants_1.ENUM_USER_ROLE.ADMIN), UpdateBookingStatusAdmin_1.default);
+router.post('/', (0, validateRequest_1.default)(boookingValidation_1.BookingValidation.createBookingZodSchema), (0, auth_1.default)(constants_1.ENUM_USER_ROLE.USER, constants_1.ENUM_USER_ROLE.ADMIN), CreateOrderBook_1.default);
+router.patch('/update-status-admin/:bookingId', (0, validateRequest_1.default)(boookingValidation_1.BookingValidation.updateBookingStatusZodSchema), (0, auth_1.default)(constants_1.ENUM_USER_ROLE.SUPER_ADMIN, constants_1.ENUM_USER_ROLE.ADMIN), UpdateBookingStatusAdmin_1.default);
+router.patch('/user/update-cancel-admin/:bookingId', (0, auth_1.default)(constants_1.ENUM_USER_ROLE.USER), UpdateCancelStatus_1.default);
 // router.delete(
 //     '/:faqId',
 //     auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),

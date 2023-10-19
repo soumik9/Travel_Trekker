@@ -6,7 +6,7 @@ import catchAsync from "../../../utils/helpers/catchAsync"
 import ApiError from "../../../utils/errors/ApiError";
 import Booking from "../../models/bookingSchema";
 
-const UpdateBookingStatusAdmin: RequestHandler = catchAsync(
+const UpdateCancelStatus: RequestHandler = catchAsync(
     async (req: IRequestFile, res: Response) => {
 
         const bookingId = req.params.bookingId;
@@ -15,10 +15,14 @@ const UpdateBookingStatusAdmin: RequestHandler = catchAsync(
         const booking = await Booking.findById(bookingId);
         if (!booking) throw new ApiError(httpStatus.NOT_FOUND, 'Check is booking available!');
 
+        if (booking.status === 'accept') {
+            throw new ApiError(httpStatus.NOT_FOUND, 'Cant change on accept status!');
+        }
+
         // updating status
         await Booking.findOneAndUpdate({ _id: bookingId }, {
             $set: {
-                status: body.status
+                status: 'cancel'
             }
         }, { new: true, runValidators: true })
 
@@ -30,4 +34,4 @@ const UpdateBookingStatusAdmin: RequestHandler = catchAsync(
     }
 )
 
-export default UpdateBookingStatusAdmin
+export default UpdateCancelStatus

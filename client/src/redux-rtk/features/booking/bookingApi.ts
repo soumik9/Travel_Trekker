@@ -85,6 +85,26 @@ export const bookingApi = apiSlice.injectEndpoints({
                 }
             }
         }),
+
+        updateBookingStatusCancelUser: builder.mutation({
+            query: ({ bookingId, updatedData }) => ({
+                url: `booking/user/update-cancel-admin/${bookingId}`,
+                method: 'PATCH',
+                body: updatedData,
+            }),
+            invalidatesTags: (result, error, arg) => [
+                tagTypes.BOOKINGS,
+                { type: tagTypes.BOOKING, id: arg.bookingId }
+            ],
+            async onQueryStarted(arg, { queryFulfilled }) {
+                try {
+                    const result = await queryFulfilled;
+                    toast.success(result.data.message);
+                } catch (error: any) {
+                    toast.error(error.error.data.message);
+                }
+            }
+        }),
     })
 });
 
@@ -93,5 +113,6 @@ export const {
     useGetBookingsByIdQuery,
     useGetBookingsQuery,
     useGetBookingQuery,
-    useUpdateBookingStatusAdminMutation
+    useUpdateBookingStatusAdminMutation,
+    useUpdateBookingStatusCancelUserMutation
 } = bookingApi;

@@ -12,11 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.userRoles = void 0;
 const mongoose_1 = require("mongoose");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const validator_1 = __importDefault(require("validator"));
 const constants_1 = require("../../utils/constants/constants");
 const config_1 = __importDefault(require("../../utils/server/config"));
+exports.userRoles = [constants_1.ENUM_USER_ROLE.ADMIN, constants_1.ENUM_USER_ROLE.SUPER_ADMIN, constants_1.ENUM_USER_ROLE.USER];
 const userSchema = new mongoose_1.Schema({
     name: {
         type: String,
@@ -39,7 +41,7 @@ const userSchema = new mongoose_1.Schema({
         lowercase: true,
         required: [true, 'Role name is required'],
         enum: {
-            values: [constants_1.ENUM_USER_ROLE.ADMIN, constants_1.ENUM_USER_ROLE.SUPER_ADMIN, constants_1.ENUM_USER_ROLE.USER],
+            values: exports.userRoles,
             message: `Role value can not be {VALUE}, must be ${constants_1.ENUM_USER_ROLE.ADMIN}/${constants_1.ENUM_USER_ROLE.SUPER_ADMIN}/${constants_1.ENUM_USER_ROLE.USER}`
         }
     },

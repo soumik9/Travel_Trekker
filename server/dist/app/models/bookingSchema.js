@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.bookingStatuses = void 0;
 const mongoose_1 = require("mongoose");
+exports.bookingStatuses = ['pending', 'accept', 'reject', 'adjust', 'cancel'];
 const bookingSchema = new mongoose_1.Schema({
     user: {
         type: mongoose_1.Types.ObjectId,
@@ -31,7 +33,7 @@ const bookingSchema = new mongoose_1.Schema({
     status: {
         type: String,
         enum: {
-            values: ['pending', 'accept', 'reject', 'adjust', 'cancel'],
+            values: exports.bookingStatuses,
             message: `Role value can not be {VALUE}, must be accept/reject/adjust/cancel`
         },
         default: 'pending'

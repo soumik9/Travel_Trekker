@@ -24,16 +24,16 @@ const RoomsByHotel = (props: Props) => {
             <SectionLayout>
 
                 <SectionTop
-                    subTitle={`${hotel?.data.name} Rooms`}
+                    subTitle={`${hotel?.data.name ? hotel?.data.name : ''} Rooms`}
                 />
 
-                {isLoading ? <>Loading...</> : <div className="flex flex-col gap-y-5 md:grid md:grid-cols-2 xl:grid-cols-3 md:items-center md:gap-x-4 lg:gap-[30px]">
+                {isLoading ? <>Loading...</> : hotel?.data?.rooms.length ? <div className="flex flex-col gap-y-5 md:grid md:grid-cols-2 xl:grid-cols-3 md:items-center md:gap-x-4 lg:gap-[30px]">
                     {hotel?.data?.rooms.map((item: IRoom) => <HRoomCard
                         key={item._id}
                         item={item}
                         hotel={hotel?.data}
                     />)}
-                </div>}
+                </div> : <div className='text-secondary'>No rooms for this hotel</div>}
             </SectionLayout>
         </main>
     )

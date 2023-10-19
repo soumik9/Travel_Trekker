@@ -18,7 +18,7 @@ const createBookingZodSchema = z.object({
         totalCost: z.number({
             required_error: 'Total cost is required'
         }),
-        status: z.enum([...bookingStatuses] as [string, ...string[]]),
+        status: z.enum([...bookingStatuses] as [string, ...string[]]).optional(),
     }),
 });
 

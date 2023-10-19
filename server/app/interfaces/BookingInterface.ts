@@ -10,6 +10,6 @@ export interface IBooking {
     address: string;
     totalDays: number;
     totalCost: number;
-    status: 'pending' | 'accetpt' | 'reject' | 'adjust' | 'cancel';
+    status: 'pending' | 'accept' | 'reject' | 'adjust' | 'cancel';
     isReviewed: boolean;
 }

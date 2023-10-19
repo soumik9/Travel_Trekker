@@ -62,6 +62,7 @@ const UpdateHotel = ({ data, hotelId }: Props) => {
         // final data to send server
         const updatedData = {
             ...fData,
+            rating: parseFloat(fData.rating),
             location: selectedLocation?.value,
         }
 
