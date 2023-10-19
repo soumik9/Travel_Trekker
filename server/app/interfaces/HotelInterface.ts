@@ -1,4 +1,5 @@
 import { Types } from "mongoose";
+import { IRoom } from "./RoomInterface";
 
 export interface IHotel {
     _id?: string;
@@ -7,5 +8,5 @@ export interface IHotel {
     location: string;
     rating: number;
     isAvailable: boolean;
-    rooms: string[] | Types.ObjectId[] | undefined;
+    rooms: Types.ObjectId[] | IRoom[];
 }

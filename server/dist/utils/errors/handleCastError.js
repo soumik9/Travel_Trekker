@@ -1,14 +1,12 @@
-import mongoose from 'mongoose';
-import { IErrorMessage } from '../type/types';
-
-const handleCastError = (error: mongoose.Error.CastError) => {
-    const errors: IErrorMessage[] = [
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const handleCastError = (error) => {
+    const errors = [
         {
             path: error.path,
             message: 'Passed id is invalid!',
         },
     ];
-
     const statusCode = 400;
     return {
         statusCode,
@@ -16,5 +14,4 @@ const handleCastError = (error: mongoose.Error.CastError) => {
         errorMessages: errors,
     };
 };
-
-export default handleCastError;
+exports.default = handleCastError;

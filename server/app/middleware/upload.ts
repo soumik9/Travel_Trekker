@@ -12,16 +12,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage,
-  fileFilter: (req: Request, file: any, cb: (error: Error | null, acceptFile: boolean) => void) => {
-    const supportedFile = /jpg|jpeg|png|webp/;
-    const extension = path.extname(file.originalname);
-
-    if (supportedFile.test(extension)) {
-      cb(null, true);
-    } else {
-      cb(new Error('Must be a jpg/png/jpeg/webp file'), false);
-    }
-  },
 });
 
 export default upload;

@@ -17,7 +17,8 @@ const createRoom: RequestHandler = catchAsync(
         }
 
         // checking is room exists for hotel
-        if (existingHotel.rooms?.find((item: any) => parseInt(item.roomNumber) === parseInt(req.body.roomNumber))) {
+        //@ts-ignore
+        if (existingHotel.rooms.find((item: any) => parseInt(item.roomNumber) === parseInt(req.body.roomNumber))) {
             throw new ApiError(httpStatus.BAD_REQUEST, 'Room number exists for this hotel already.');
         }
 
