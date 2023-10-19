@@ -8,6 +8,10 @@ export enum tagTypes {
     HOTELS = 'Hotels',
     ROOM = 'Room',
     ROOMS = 'Rooms',
+    FAQ = 'Faq',
+    FAQS = 'Faqs',
+    NEWS = 'News',
+    NEWSES = 'Newses',
 }
 
 export const apiSlice = createApi({
@@ -29,6 +33,10 @@ export const apiSlice = createApi({
         tagTypes.HOTELS,
         tagTypes.ROOM,
         tagTypes.ROOMS,
+        tagTypes.FAQ,
+        tagTypes.FAQS,
+        tagTypes.NEWS,
+        tagTypes.NEWSES,
     ],
     endpoints: (builder) => ({}),
 })

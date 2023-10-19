@@ -1,10 +1,11 @@
-import { ENUM_USER_ROLE, addRoomLink, addUserLink, dashboardLink, editHotelLink, editRoomLink, editUserLink, hotelsLink, roomsLink, usersLink } from '@/configs/constants'
+import { ENUM_USER_ROLE, addFAQLink, addNewsLink, addRoomLink, addUserLink, dashboardLink, editFAQLink, editHotelLink, editNewsLink, editRoomLink, editUserLink, faqsLink, hotelsLink, newsLink, roomsLink, usersLink } from '@/configs/constants'
 import { cx, useAppSelector } from '@/hooks/helpers'
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { AiOutlineDashboard, AiOutlineUser } from 'react-icons/ai'
+import { AiOutlineDashboard, AiOutlineUser, AiOutlineBorderHorizontal, AiOutlineQuestionCircle } from 'react-icons/ai'
+import { MdOutlineBedroomChild, MdOutlineLocalHotel, MdOutlineNewspaper } from 'react-icons/md'
 import { addHotelLink } from '../../../../configs/constants';
 
 type Props = {}
@@ -20,21 +21,21 @@ const sidebarItems = [
     {
         text: 'Orders',
         url: '/orders',
-        icon: AiOutlineUser,
+        icon: AiOutlineBorderHorizontal,
         roles: [ENUM_USER_ROLE.USER],
         activeRouter: ['/order']
     },
     {
         text: 'Rooms',
         url: roomsLink,
-        icon: AiOutlineUser,
+        icon: MdOutlineBedroomChild,
         roles: [ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN],
         activeRouter: [roomsLink, addRoomLink, editRoomLink]
     },
     {
         text: 'Hotels',
         url: hotelsLink,
-        icon: AiOutlineUser,
+        icon: MdOutlineLocalHotel,
         roles: [ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN],
         activeRouter: [hotelsLink, addHotelLink, editHotelLink]
     },
@@ -44,6 +45,20 @@ const sidebarItems = [
         icon: AiOutlineUser,
         roles: [ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN],
         activeRouter: [usersLink, addUserLink, editUserLink]
+    },
+    {
+        text: 'FAQ',
+        url: faqsLink,
+        icon: AiOutlineQuestionCircle,
+        roles: [ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN],
+        activeRouter: [faqsLink, addFAQLink, editFAQLink]
+    },
+    {
+        text: 'News',
+        url: newsLink,
+        icon: MdOutlineNewspaper,
+        roles: [ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN],
+        activeRouter: [newsLink, addNewsLink, editNewsLink]
     },
 ]
 

@@ -8,7 +8,7 @@ import { IHotel } from '@/configs/types';
 const HomeHotels = () => {
 
     // get roles from redux api
-    const { data: hotels, isLoading, isError, isSuccess } = useGetHotelsQuery(undefined);
+    const { data: hotels, isLoading } = useGetHotelsQuery(undefined);
 
     return (
         <SectionLayout>

@@ -37,3 +37,9 @@ export interface IRoom {
     isAvailable: boolean;
     hotel: IHotel;
 }
+
+export interface IFaq {
+    _id?: string;
+    question: string;
+    answer: string;
+}

@@ -5,6 +5,7 @@ import authRouter from './authRouter'
 import hotelRouter from './hotelRouter'
 import roomRouter from './roomRouter'
 import userRouter from './userRouter'
+import faqRouter from './faqRouter'
 
 
 const apiRoutes: { path: string, route: any }[] = [
@@ -23,6 +24,10 @@ const apiRoutes: { path: string, route: any }[] = [
     {
         path: '/room',
         route: roomRouter,
+    },
+    {
+        path: '/faq',
+        route: faqRouter,
     },
 ];
 

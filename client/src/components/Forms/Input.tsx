@@ -24,7 +24,7 @@ const Input = ({ label, id, type = 'text', icon, labelRequired, error, inputCss,
       divCss,
       "w-full relative"
     )}>
-      <label htmlFor={id} className="text-sm font-semibold px-1 text-secondary">
+      <label htmlFor={id} className="text-sm font-semibold px-1 text-gray-600">
         {label} {labelRequired ? <span className="text-error">*</span> : null}
       </label>
 
