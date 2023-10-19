@@ -1,4 +1,4 @@
-import { ENUM_USER_ROLE, addFAQLink, addNewsLink, addRoomLink, addUserLink, dashboardLink, editFAQLink, editHotelLink, editNewsLink, editRoomLink, editUserLink, faqsLink, hotelsLink, newsLink, roomsLink, usersLink } from '@/configs/constants'
+import { ENUM_USER_ROLE, addFAQLink, addNewsLink, addRoomLink, addUserLink, dashboardLink, editFAQLink, editHotelLink, editNewsLink, editRoomLink, editUserLink, faqsLink, hotelsLink, newsLink, orderHistoryLink, ordersLink, roomsLink, usersLink } from '@/configs/constants'
 import { cx, useAppSelector } from '@/hooks/helpers'
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import Link from 'next/link'
@@ -20,10 +20,17 @@ const sidebarItems = [
     },
     {
         text: 'Orders',
-        url: '/orders',
+        url: ordersLink,
+        icon: AiOutlineBorderHorizontal,
+        roles: [ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN],
+        activeRouter: [ordersLink]
+    },
+    {
+        text: 'Order History',
+        url: orderHistoryLink,
         icon: AiOutlineBorderHorizontal,
         roles: [ENUM_USER_ROLE.USER],
-        activeRouter: ['/order']
+        activeRouter: [orderHistoryLink]
     },
     {
         text: 'Rooms',

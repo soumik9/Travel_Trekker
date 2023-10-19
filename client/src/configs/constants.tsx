@@ -23,6 +23,8 @@ export const roomsByHotelUrl = '/rooms-by-hotel/[hotelId]'
 export const dashboardLink = '/dashboard'
 export const profileLink = '/profile'
 
+
+
 export const usersLink = '/user'
 export const addUserLink = '/user/add'
 export const editUserLink = '/user/[userId]'
@@ -43,6 +45,9 @@ export const newsLink = '/news'
 export const addNewsLink = '/news/add'
 export const editNewsLink = '/news/[newsId]'
 
+export const ordersLink = '/order'
+export const orderHistoryLink = '/order-history'
+
 export const landingPageLayoutUrls = [
     homeLink,
     landingRoomsLink,
@@ -57,6 +62,7 @@ export const dashboardPageLayoutUrls = [
     hotelsLink, addHotelLink, editHotelLink,
     faqsLink, addFAQLink, editFAQLink,
     newsLink, addNewsLink, editNewsLink,
+    orderHistoryLink, ordersLink
 ]
 
 export const rolesOptions: selectItemType[] = [

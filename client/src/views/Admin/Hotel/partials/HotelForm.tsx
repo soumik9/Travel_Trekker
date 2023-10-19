@@ -58,6 +58,7 @@ const HotelForm = ({ control, errors, selectedLocation, setSelectedLocation, err
                 placeHolder='Select Location'
                 required
                 error={error.location}
+                isSearchable
             />
 
 

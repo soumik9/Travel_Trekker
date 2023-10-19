@@ -10,7 +10,7 @@ const getRoom: RequestHandler = catchAsync(
 
         // finding room
         const roomId = req.params.roomId;
-        const result = await Room.findOne({ _id: roomId }).select({ __v: 0 });
+        const result = await Room.findOne({ _id: roomId }).populate('hotel').select({ __v: 0 });
 
         sendResponse<IRoom>(res, {
             statusCode: httpStatus.OK,

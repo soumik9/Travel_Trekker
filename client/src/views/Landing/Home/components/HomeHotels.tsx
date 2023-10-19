@@ -18,7 +18,7 @@ const HomeHotels = () => {
             />
 
             {isLoading ? <>Loading...</> : <div className="flex flex-col gap-y-5 md:grid md:grid-cols-2 xl:grid-cols-3 md:items-center md:gap-x-4 lg:gap-[30px]">
-                {hotels?.data.slice(0, 3).map((item: IHotel, index: number) => <HotelCard
+                {hotels?.data.map((item: IHotel, index: number) => <HotelCard
                     key={`hotel${index}`}
                     item={item}
                 />)}
