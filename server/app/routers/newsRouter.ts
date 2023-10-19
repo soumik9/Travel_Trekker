@@ -4,7 +4,6 @@ const router = express.Router();
 // middleware
 import auth from '../middleware/auth'
 import { ENUM_USER_ROLE } from '../../utils/constants/constants';
-import upload from '../middleware/upload';
 import GetNews from '../controllers/news/GetNews';
 import CreateNews from '../controllers/news/CreateNews';
 import DeleteNews from '../controllers/news/DeleteNews';
@@ -18,7 +17,6 @@ router.get(
 router.post(
     '/',
     auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
-    upload.single('image'),
     CreateNews
 );
 

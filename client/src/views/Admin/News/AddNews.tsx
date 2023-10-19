@@ -10,6 +10,7 @@ import * as Yup from "yup";
 import Input from '@/components/Forms/Input';
 import toast from 'react-hot-toast';
 import ImageBox from '@/components/Forms/ImageBox';
+import axios from 'axios';
 
 export const newsSchema = Yup.object().shape({
     title: Yup.string().required("Title is required"),
@@ -61,15 +62,36 @@ const AddNews = () => {
     }
 
     // add new user funtion
-    const handleAddNews = (fData: any) => {
+    const handleAddNews = async (fData: any) => {
+
+        if (!image) {
+            toast.error('Image is require');
+            return;
+        }
 
         // creating form data
         var formData = new FormData();
-        formData.append('image', image);
-        formData.append('data', JSON.stringify(fData));
+        formData.append('file', image);
+        formData.append('upload_preset', process.env.NEXT_PUBLIC_MAIN_UPLOAD_PRESET as string);
 
-        // post data to server
-        createNews(formData)
+        let simage = '';
+
+        try {
+            const response = await axios.post(
+                `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_MAIN_CLOUD_NAME}/image/upload`,
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }
+            );
+            // post data to server
+            simage = response.data.secure_url;
+            createNews({ ...fData, image: simage });
+        } catch (error) {
+            console.error('Error uploading image to Cloudinary:', error);
+        }
     }
 
     return (
